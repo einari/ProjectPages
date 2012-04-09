@@ -56,14 +56,12 @@
     <Content Include="img\glyphicons-halflings-white.png" />
     <Content Include="img\glyphicons-halflings.png" />
     <Content Include="Global.asax" />
+    <Content Include="css\Collegiate.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="js\" />
     <Folder Include="css\" />
     <Folder Include="img\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="css\Collegiate.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">

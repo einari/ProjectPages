@@ -15,7 +15,7 @@
 }
 
 .left.ribbon-holder {
-  left: 0;
+  left: -4px;
 }
 
 .ribbon, .ribbon:hover {

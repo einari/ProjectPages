@@ -93,7 +93,6 @@
   </ProjectExtensions>
   <ItemGroup>
     <Content Include="DataServices\Packages.svc" />
-    <Content Include="Default.aspx" />
     <Content Include="_Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="index.html" />

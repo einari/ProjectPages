@@ -22,6 +22,7 @@ packages
 *.fb7lck
 *.fbpinf
 *.test-cache
+**\App_Data
 
 
 # OS generated files #

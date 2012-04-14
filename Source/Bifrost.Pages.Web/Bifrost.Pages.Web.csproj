@@ -34,24 +34,24 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Elmah">
-      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+      <HintPath>..\solutions\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <HintPath>..\solutions\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
     <Reference Include="Ninject">
-      <HintPath>..\packages\Ninject.2.2.1.4\lib\net40-Full\Ninject.dll</HintPath>
+      <HintPath>..\solutions\packages\Ninject.2.2.1.4\lib\net40-Full\Ninject.dll</HintPath>
     </Reference>
     <Reference Include="NuGet.Core, Version=1.7.30402.9028, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NuGet.Core.1.7.0\lib\net40-Client\NuGet.Core.dll</HintPath>
+      <HintPath>..\solutions\packages\NuGet.Core.1.7.0\lib\net40-Client\NuGet.Core.dll</HintPath>
     </Reference>
     <Reference Include="NuGet.Server">
-      <HintPath>..\packages\NuGet.Server.1.7.1\lib\net40\NuGet.Server.dll</HintPath>
+      <HintPath>..\solutions\packages\NuGet.Server.1.7.1\lib\net40\NuGet.Server.dll</HintPath>
     </Reference>
     <Reference Include="RouteMagic">
-      <HintPath>..\packages\RouteMagic.1.1.3\lib\net40\RouteMagic.dll</HintPath>
+      <HintPath>..\solutions\packages\RouteMagic.1.1.3\lib\net40\RouteMagic.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data.Services" />
@@ -62,7 +62,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Web.Services" />
     <Reference Include="WebActivator">
-      <HintPath>..\packages\WebActivator.1.4.4\lib\net40\WebActivator.dll</HintPath>
+      <HintPath>..\solutions\packages\WebActivator.1.4.4\lib\net40\WebActivator.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
@@ -92,8 +92,8 @@
     </VisualStudio>
   </ProjectExtensions>
   <ItemGroup>
-    <Content Include="App_Readme\Elmah.txt" />
     <Content Include="DataServices\Packages.svc" />
+    <Content Include="Default.aspx" />
     <Content Include="_Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="index.html" />

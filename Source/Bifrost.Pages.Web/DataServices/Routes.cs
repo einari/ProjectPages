@@ -17,11 +17,13 @@ namespace BifrostPages {
 
         private static void MapRoutes(RouteCollection routes) {
             // The default route is http://{root}/nuget/Packages
+			
+			/*
             var factory = new DataServiceHostFactory();
             var serviceRoute = new ServiceRoute("nuget", factory, typeof(Packages));
             serviceRoute.Defaults = new RouteValueDictionary { { "serviceType", "odata" } };
             serviceRoute.Constraints = new RouteValueDictionary { { "serviceType", "odata" } };
-            routes.Add("nuget", serviceRoute);
+            routes.Add("nuget", serviceRoute);*/
         }
 
         private static PackageService CreatePackageService() {

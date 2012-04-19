@@ -36,16 +36,8 @@
     <Reference Include="Elmah">
       <HintPath>..\solutions\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\solutions\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-    </Reference>
     <Reference Include="Ninject">
       <HintPath>..\solutions\packages\Ninject.2.2.1.4\lib\net40-Full\Ninject.dll</HintPath>
-    </Reference>
-    <Reference Include="NuGet.Core, Version=1.7.30402.9028, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\solutions\packages\NuGet.Core.1.7.0\lib\net40-Client\NuGet.Core.dll</HintPath>
     </Reference>
     <Reference Include="NuGet.Server">
       <HintPath>..\solutions\packages\NuGet.Server.1.7.1\lib\net40\NuGet.Server.dll</HintPath>
@@ -56,13 +48,19 @@
     <Reference Include="System" />
     <Reference Include="System.Data.Services" />
     <Reference Include="System.ServiceModel" />
-    <Reference Include="System.ServiceModel.Activation" />
     <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Web.Services" />
     <Reference Include="WebActivator">
       <HintPath>..\solutions\packages\WebActivator.1.4.4\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\solutions\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="NuGet.Core">
+      <HintPath>..\solutions\packages\NuGet.Core.1.7.0\lib\net40-Client\NuGet.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
@@ -107,6 +105,26 @@
     <Content Include="img\glyphicons-halflings.png" />
     <Content Include="Global.asax" />
     <Content Include="css\Collegiate.ttf" />
+    <Content Include="prettify\lang-apollo.js" />
+    <Content Include="prettify\lang-clj.js" />
+    <Content Include="prettify\lang-css.js" />
+    <Content Include="prettify\lang-go.js" />
+    <Content Include="prettify\lang-hs.js" />
+    <Content Include="prettify\lang-lisp.js" />
+    <Content Include="prettify\lang-lua.js" />
+    <Content Include="prettify\lang-ml.js" />
+    <Content Include="prettify\lang-n.js" />
+    <Content Include="prettify\lang-proto.js" />
+    <Content Include="prettify\lang-scala.js" />
+    <Content Include="prettify\lang-sql.js" />
+    <Content Include="prettify\lang-tex.js" />
+    <Content Include="prettify\lang-vb.js" />
+    <Content Include="prettify\lang-vhdl.js" />
+    <Content Include="prettify\lang-wiki.js" />
+    <Content Include="prettify\lang-xq.js" />
+    <Content Include="prettify\lang-yaml.js" />
+    <Content Include="prettify\prettify.css" />
+    <Content Include="prettify\prettify.js" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataServices\Routes.cs" />
@@ -121,4 +139,7 @@
     <Content Include="web.config" />
   </ItemGroup>
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <ItemGroup>
+    <Folder Include="prettify\" />
+  </ItemGroup>
 </Project>

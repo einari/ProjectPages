@@ -122,8 +122,28 @@ public class PostCommandHandlers : ICommandHandler
 			<div class="span6">
 				<pre class="prettyprint">
 					<code class="language-cs">
+public class Post : AggregatedRoot
+{
+	public Post(Guid id) : base(id)
+	{
+	}				
+
+	public void Create(string title, string body)
+	{
+		Apply(new PostCreated(Id) 
+				{ Title=title, Body=body});
+	}
+}				
+					</code>
+				</pre>
+			</div>
+
+			<div class="span6">
+				<pre class="prettyprint">
+					<code class="language-cs">
 public class PostCreated : Event
 {
+	public PostCreated(Guid id) : base(id) {}				
 	public string Title { get; set; }
 	public string Body { get; set; }				
 }				
@@ -131,6 +151,9 @@ public class PostCreated : Event
 				</pre>
 			</div>
 
+		</div>
+		
+		<div class="row">
 			<div class="span6">
 				<pre class="prettyprint">
 					<code class="language-cs">
@@ -144,7 +167,14 @@ public class PostSubscribers : IEventSubscriber
 					</code>
 				</pre>
 			</div>
-
+		
+			<div class="span6">
+				<pre class="prettyprint">
+					<code class="language-cs">
+					</code>
+				</pre>
+			</div>
+		
 		</div>
 	</div>		
 </body>

@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+		<header class="jumbotron subhead">
+			<div class="subnav">
+				<ul class="nav nav-pills" data-bind="foreach: sampleGroups">
+				
+		        	<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+							<span data-bind="text: $data.name"></span><b class="caret"></b>
+						</a>
+					
+						<ul class="dropdown-menu" data-bind="foreach: samples">
+							<li>
+								<a href="#" data-bind="text: $data, click: $root.selectSample.bind($data, $parent, $data)"></a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</header>	
+		
+		
+		<div data-bind="feature: currentSample"></div>
+	</body>
+</html>

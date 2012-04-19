@@ -22,15 +22,17 @@
 	<!--		
 	<link rel="stylesheet" href="css/bootstrap-responsive.min.css" type="text/css" media="screen" title="no title" charset="utf-8">-->
 	
+	<script type="text/javascript">
+		window['PR_SHOULD_USE_CONTINUATION'] = true;
+		window['PR_TAB_WIDTH'] = 4;			
+	</script>
 	
-	<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="prettify/prettify.js" type="text/javascript" charset="utf-8"></script>
-
-	
+	<script data-main="scripts/main" src="scripts/require.js" type="text/javascript" charset="utf-8"></script>
 </head>
 
 
-<body onload="prettyPrint(); adjustHeightInParent()">
+<body onload="prettyPrint();" data-spy="scroll" data-target=".subnav" data-offset="50">
+		
 		
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
@@ -43,10 +45,11 @@
 				<a class="brand" href="#">Bifrost</a>
 				<div class="nav-collapse">
 					<ul class="nav">
-						<li class="active"><a href="#">Home</a></li>
+						<li><a href="#/home">Home</a></li>
 						<li><a href="https://groups.google.com/group/bifrostproject">Forum</a></li>
-						<li><a href="#about">About</a></li>
-						<li><a href="#contact">Contact</a></li>
+						<li><a href="#/samples">Samples</a></li>
+						<li><a href="#/about">About</a></li>
+						<li><a href="#">Contact</a></li>
 					</ul>
 				</div>
 			</div>
@@ -59,124 +62,9 @@
 	</div>
 		
 	<div class="container">
-		<div class="hero-unit">
-			<h1>Welcome</h1>
-			<p>
-				This will become the home page of the Bifrost project.<br>
-				Bifrost is an application development framework and tooling focusing on good development practices such
-				as CQRS and MVVM.
-			</p>
-		</div>
+		<div data-bind="feature: feature"></div>
 	</div>
 
-	<div class="container">
-		<div class="row">
-			<div class="span6">
-				<pre class="prettyprint">
-					<xmp class="prettyprint">
-<div data-bind="feature:feature"></div>
-					</xmp>
-				</pre>
-		</div>
-				
-		</div>
-		<div class="row">
-			<div class="span6">
-				<pre class="prettyprint">
-					<code class="language-cs">
-public class CreatePost : Command
-{
-	public Guid PostId { get; set; }				
-	public string Title { get; set; }
-	public string Body { get; set; }				
-}				
-					</code>
-				</pre>
-			</div>
-		
-			<div class="span6">
-				<pre class="prettyprint">
-					<code class="language-cs">
-public class PostCommandHandlers : ICommandHandler
-{
-	IAggregatedRootRepository<Post> _repository;
-				
-	public PostCommandHandlers(
-			IAggregatedRootRepository<Post> repository)
-	{
-		_repository = repository;
-	}
-				
-	public void Handle(CreatePost create)
-	{
-		var post = _repository.Get(create.PostId);
-		post.Create(create.Title, create.Body);
-	}
-}				
-					</code>
-				</pre>
-			</div>
-		</div>		
-		
-		<div class="row">
-			<div class="span6">
-				<pre class="prettyprint">
-					<code class="language-cs">
-public class Post : AggregatedRoot
-{
-	public Post(Guid id) : base(id)
-	{
-	}				
-
-	public void Create(string title, string body)
-	{
-		Apply(new PostCreated(Id) 
-				{ Title=title, Body=body});
-	}
-}				
-					</code>
-				</pre>
-			</div>
-
-			<div class="span6">
-				<pre class="prettyprint">
-					<code class="language-cs">
-public class PostCreated : Event
-{
-	public PostCreated(Guid id) : base(id) {}				
-	public string Title { get; set; }
-	public string Body { get; set; }				
-}				
-					</code>
-				</pre>
-			</div>
-
-		</div>
-		
-		<div class="row">
-			<div class="span6">
-				<pre class="prettyprint">
-					<code class="language-cs">
-public class PostSubscribers : IEventSubscriber
-{
-	public void Process(PostCreated created)
-	{
-		// Persist somewhere			
-	}				
-}				
-					</code>
-				</pre>
-			</div>
-		
-			<div class="span6">
-				<pre class="prettyprint">
-					<code class="language-cs">
-					</code>
-				</pre>
-			</div>
-		
-		</div>
-	</div>		
 </body>
 </html>
 

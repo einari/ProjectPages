@@ -94,8 +94,6 @@
     <Content Include="_Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="index.html" />
-    <Content Include="js\bootstrap.js" />
-    <Content Include="js\bootstrap.min.js" />
     <Content Include="css\bootstrap-responsive.css" />
     <Content Include="css\bootstrap-responsive.min.css" />
     <Content Include="css\bootstrap.css" />
@@ -126,6 +124,34 @@
     <Content Include="prettify\prettify.css" />
     <Content Include="prettify\prettify.js" />
     <Content Include="prettify\sunburst.css" />
+    <Content Include="scripts\bootstrap.js" />
+    <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="scripts\Bifrost.debug.js" />
+    <Content Include="scripts\custom.js" />
+    <Content Include="scripts\domReady.js" />
+    <Content Include="scripts\hoverintent.js" />
+    <Content Include="scripts\jquery-1.7.1.min.js" />
+    <Content Include="scripts\jquery.history.js" />
+    <Content Include="scripts\knockout-2.0.0.js" />
+    <Content Include="scripts\knockout.mapping-2.0.0.js" />
+    <Content Include="scripts\main.js" />
+    <Content Include="scripts\order.js" />
+    <Content Include="scripts\require.js" />
+    <Content Include="scripts\text.js" />
+    <Content Include="index.js" />
+    <Content Include="features\home\view.html" />
+    <Content Include="features\home\viewModel.js" />
+    <Content Include="features\samples\viewModel.js" />
+    <Content Include="features\samples\view.html" />
+    <Content Include="features\samples\samples.html" />
+    <Content Include="features\samples\index.html" />
+    <Content Include="features\samples\index.js" />
+    <Content Include="features\samples\commands\command.html" />
+    <Content Include="features\samples\commands\command.js" />
+    <Content Include="features\samples\commands\commandInputValidator.js" />
+    <Content Include="features\samples\commands\commandInputValidator.html" />
+    <Content Include="features\samples\commands\commandBusinessValidator.html" />
+    <Content Include="features\samples\commands\commandBusinessValidator.js" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataServices\Routes.cs" />
@@ -142,5 +168,9 @@
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <ItemGroup>
     <Folder Include="prettify\" />
+    <Folder Include="features\" />
+    <Folder Include="features\home\" />
+    <Folder Include="features\samples\" />
+    <Folder Include="features\samples\commands\" />
   </ItemGroup>
 </Project>

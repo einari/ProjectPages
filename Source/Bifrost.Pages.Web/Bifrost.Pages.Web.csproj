@@ -125,6 +125,7 @@
     <Content Include="prettify\lang-yaml.js" />
     <Content Include="prettify\prettify.css" />
     <Content Include="prettify\prettify.js" />
+    <Content Include="prettify\sunburst.css" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataServices\Routes.cs" />

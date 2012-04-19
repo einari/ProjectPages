@@ -1,0 +1,29 @@
+
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+		<div class="row">
+			<div class="span8">
+				<pre class="prettyprint">
+					<code class="language-cs">
+public class Post : AggregatedRoot
+{
+	public Post(Guid id) : base(id)
+	{
+	}				
+
+	public void Create(string title, string body)
+	{
+		Apply(new PostCreated(Id) 
+				{ Title=title, Body=body});
+	}
+}				
+					</code>
+				</pre>
+			</div>
+		</div>
+
+	</body>
+</html>

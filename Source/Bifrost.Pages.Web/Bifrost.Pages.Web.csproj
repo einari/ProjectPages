@@ -148,10 +148,18 @@
     <Content Include="features\samples\index.js" />
     <Content Include="features\samples\commands\command.html" />
     <Content Include="features\samples\commands\command.js" />
-    <Content Include="features\samples\commands\commandInputValidator.js" />
-    <Content Include="features\samples\commands\commandInputValidator.html" />
-    <Content Include="features\samples\commands\commandBusinessValidator.html" />
-    <Content Include="features\samples\commands\commandBusinessValidator.js" />
+    <Content Include="features\samples\validation\commandBusinessValidator.html" />
+    <Content Include="features\samples\validation\commandBusinessValidator.js" />
+    <Content Include="features\samples\validation\commandInputValidator.html" />
+    <Content Include="features\samples\validation\commandInputValidator.js" />
+    <Content Include="features\samples\domain\aggregatedRoot.html" />
+    <Content Include="features\samples\domain\aggregatedRoot.js" />
+    <Content Include="features\samples\events\event.html" />
+    <Content Include="features\samples\events\event.js" />
+    <Content Include="features\samples\commands\commandHandler.html" />
+    <Content Include="features\samples\commands\commandHandler.js" />
+    <Content Include="features\samples\validation\chapterValidator.html" />
+    <Content Include="features\samples\validation\chapterValidator.js" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataServices\Routes.cs" />
@@ -172,5 +180,8 @@
     <Folder Include="features\home\" />
     <Folder Include="features\samples\" />
     <Folder Include="features\samples\commands\" />
+    <Folder Include="features\samples\validation\" />
+    <Folder Include="features\samples\domain\" />
+    <Folder Include="features\samples\events\" />
   </ItemGroup>
 </Project>

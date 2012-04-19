@@ -9,7 +9,10 @@
 		var self = this;
 		
 		this.sampleGroups = ko.observableArray([
-			new Group("commands",["command", "commandInputValidator", "commandBusinessValidator"])
+			new Group("commands",["command", "commandHandler"]),
+			new Group("domain",["aggregatedRoot"]),
+			new Group("events",["event"]),
+			new Group("validation",["commandInputValidator", "commandBusinessValidator", "chapterValidator"]),
 		]);
 		
 		this.currentSample = ko.observable("samples/index");

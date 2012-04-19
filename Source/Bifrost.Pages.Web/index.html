@@ -71,7 +71,7 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="span8">
+			<div class="span6">
 				<pre class="prettyprint">
 					<xmp class="prettyprint">
 <div data-bind="feature:feature"></div>
@@ -81,34 +81,71 @@
 				
 		</div>
 		<div class="row">
-			<div class="span4">
+			<div class="span6">
 				<pre class="prettyprint">
 					<code class="language-cs">
-using SomethingElse;
-
-namespace Something
+public class CreatePost : Command
 {
-	public void SomethingElse()
-	{
-		
-	}	
-}	
+	public Guid PostId { get; set; }				
+	public string Title { get; set; }
+	public string Body { get; set; }				
+}				
 					</code>
 				</pre>
 			</div>
-			
-			<div class="span8">
+		
+			<div class="span6">
 				<pre class="prettyprint">
-					<code class="language-js">
-Bifrost.validation.something = (function () {
-	
-})();
+					<code class="language-cs">
+public class PostCommandHandlers : ICommandHandler
+{
+	IAggregatedRootRepository<Post> _repository;
+				
+	public PostCommandHandlers(
+			IAggregatedRootRepository<Post> repository)
+	{
+		_repository = repository;
+	}
+				
+	public void Handle(CreatePost create)
+	{
+		var post = _repository.Get(create.PostId);
+		post.Create(create.Title, create.Body);
+	}
+}				
 					</code>
 				</pre>
-					
-			</div>		
-			
+			</div>
 		</div>		
+		
+		<div class="row">
+			<div class="span6">
+				<pre class="prettyprint">
+					<code class="language-cs">
+public class PostCreated : Event
+{
+	public string Title { get; set; }
+	public string Body { get; set; }				
+}				
+					</code>
+				</pre>
+			</div>
+
+			<div class="span6">
+				<pre class="prettyprint">
+					<code class="language-cs">
+public class PostSubscribers : IEventSubscriber
+{
+	public void Process(PostCreated created)
+	{
+		// Persist somewhere			
+	}				
+}				
+					</code>
+				</pre>
+			</div>
+
+		</div>
 	</div>		
 </body>
 </html>

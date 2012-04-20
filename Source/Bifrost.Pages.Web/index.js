@@ -26,8 +26,28 @@
 		
 		$.get("content/Specifications.txt", function(e) {
 			var markUp = $("<div/>").append($(marked(e)));
+
+			/*			
+		<div class="row">
+			<div class="span8">
+				<pre class="prettyprint">*/
 			
-			$("code",markUp).addClass("prettyprint");
+			
+			var codeBlocks = $("code",markUp);
+			
+			$.each(codeBlocks, function(index, item) {
+
+				var row = $("<div class='row'/>");
+				var span = $("<div class='span8'/>");
+				var pre = $("<pre class='prettyprint'/>");
+				
+				row.append(span);
+				span.append(pre);
+				pre.append($(item).html());
+
+				$(item).parent().replaceWith(row);
+
+			});
 			
 			
 			self.content($(markUp).html());

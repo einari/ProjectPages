@@ -161,7 +161,7 @@
     <Content Include="features\samples\validation\chapterValidator.html" />
     <Content Include="features\samples\validation\chapterValidator.js" />
     <Content Include="scripts\marked.js" />
-    <Content Include="Specifications.md" />
+    <Content Include="content\Specifications.md" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataServices\Routes.cs" />
@@ -185,5 +185,6 @@
     <Folder Include="features\samples\validation\" />
     <Folder Include="features\samples\domain\" />
     <Folder Include="features\samples\events\" />
+    <Folder Include="content\" />
   </ItemGroup>
 </Project>

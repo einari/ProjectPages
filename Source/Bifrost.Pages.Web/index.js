@@ -23,7 +23,7 @@
 		  */
 		});		
 		
-		$.get("Specifications.md", function(e) {
+		$.get("content/Specifications.md", function(e) {
 			var markUp = $("<div/>").append($(marked(e)));
 			
 			$("code",markUp).addClass("prettyprint");

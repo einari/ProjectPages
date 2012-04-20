@@ -14,7 +14,8 @@ require.config({
 	    "domReady": "http://cdn.dolittle.com/Require/domReady",
 	    "text": "http://cdn.dolittle.com/Require/text",
 	    "bootstrap": "bootstrap",
-	    "prettify": "/prettify/prettify"
+	    "prettify": "/prettify/prettify",
+	    "marked": "marked"
 	}
 });
 
@@ -25,7 +26,7 @@ require(
 	function() {
 		require(["jquery.history"],
 		    function () {
-		        require(["knockout.mapping", "bifrost", "bootstrap", "prettify"],
+		        require(["knockout.mapping", "bifrost", "bootstrap", "prettify", "marked"],
 		            function () {
 		                Bifrost.features.featureMapper.add("admin/{feature}/{subFeature}", "/administration/{feature}/{subFeature}", false);
 		                Bifrost.features.featureMapper.add("admin/{feature}", "/administration/{feature}", true);

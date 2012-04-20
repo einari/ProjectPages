@@ -160,6 +160,7 @@
     <Content Include="features\samples\commands\commandHandler.js" />
     <Content Include="features\samples\validation\chapterValidator.html" />
     <Content Include="features\samples\validation\chapterValidator.js" />
+    <Content Include="scripts\marked.js" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataServices\Routes.cs" />

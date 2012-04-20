@@ -1,5 +1,4 @@
-	public class CreatePostBusinessValidator : 
-		CommandBusinessValidator<CreatePost>
+	public class CreatePostBusinessValidator : CommandBusinessValidator<CreatePost>
 	{
 	
 		public override IEnumerable<ValidationResult> 

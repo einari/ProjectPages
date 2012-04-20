@@ -1,5 +1,4 @@
-	public class CreatePostInputValidator : 
-			CommandInputValidator<CreatePost>
+	public class CreatePostInputValidator : CommandInputValidator<CreatePost>
 	{
 		public CreatePostInputValidator()
 		{

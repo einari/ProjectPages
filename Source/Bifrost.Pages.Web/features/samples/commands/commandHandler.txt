@@ -2,8 +2,7 @@
 	{
 		IAggregatedRootRepository<Post> _repository;
 					
-		public PostCommandHandlers(
-				IAggregatedRootRepository<Post> repository)
+		public PostCommandHandlers(IAggregatedRootRepository<Post> repository)
 		{
 			_repository = repository;
 		}

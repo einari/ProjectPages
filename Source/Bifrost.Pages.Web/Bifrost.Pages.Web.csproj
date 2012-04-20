@@ -154,6 +154,7 @@
     <Content Include="features\samples\validation\chapterValidator.txt" />
     <Content Include="features\samples\validation\commandBusinessValidator.txt" />
     <Content Include="features\samples\validation\commandInputValidator.txt" />
+    <Content Include="features\samples\commands\command.txt" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataServices\Routes.cs" />
@@ -178,8 +179,5 @@
     <Folder Include="features\samples\domain\" />
     <Folder Include="features\samples\events\" />
     <Folder Include="content\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="features\samples\commands\command.txt" />
   </ItemGroup>
 </Project>

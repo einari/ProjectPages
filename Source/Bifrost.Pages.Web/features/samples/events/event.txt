@@ -1,23 +1,6 @@
-
-<html>
-	<head>
-		<title></title>
-	</head>
-	<body>
-		<div class="row">
-			<div class="span8">
-				<pre class="prettyprint">
-					<code class="language-cs">
-public class PostCreated : Event
-{
-	public PostCreated(Guid id) : base(id) {}				
-	public string Title { get; set; }
-	public string Body { get; set; }				
-}				
-					</code>
-				</pre>
-			</div>
-		</div>
-
-	</body>
-</html>
+	public class PostCreated : Event
+	{
+		public PostCreated(Guid id) : base(id) {}				
+		public string Title { get; set; }
+		public string Body { get; set; }				
+	}				

@@ -1,33 +1,16 @@
-
-<html>
-	<head>
-		<title></title>
-	</head>
-	<body>
-		<div class="row">
-			<div class="span8">
-				<pre class="prettyprint">
-					<code class="language-cs">
-public class PostCommandHandlers : ICommandHandler
-{
-	IAggregatedRootRepository<Post> _repository;
-				
-	public PostCommandHandlers(
-			IAggregatedRootRepository<Post> repository)
+	public class PostCommandHandlers : ICommandHandler
 	{
-		_repository = repository;
-	}
-				
-	public void Handle(CreatePost create)
-	{
-		var post = _repository.Get(create.PostId);
-		post.Create(create.Title, create.Body);
-	}
-}				
-					</code>
-				</pre>
-			</div>
-		</div>
-
-	</body>
-</html>
+		IAggregatedRootRepository<Post> _repository;
+					
+		public PostCommandHandlers(
+				IAggregatedRootRepository<Post> repository)
+		{
+			_repository = repository;
+		}
+					
+		public void Handle(CreatePost create)
+		{
+			var post = _repository.Get(create.PostId);
+			post.Create(create.Title, create.Body);
+		}
+	}				

@@ -1,27 +1,10 @@
-
-<html>
-	<head>
-		<title></title>
-	</head>
-	<body>
-		<div class="row">
-			<div class="span8">
-				<pre class="prettyprint">
-					<code class="language-cs">
-public class CreatePostInputValidator : 
-		CommandInputValidator<CreatePost>
-{
-	public CreatePostInputValidator()
+	public class CreatePostInputValidator : 
+			CommandInputValidator<CreatePost>
 	{
-		RuleFor(c=>c.Title)
-			.NotEmpty()
-			.WithMessage("Title is required");				
-	}					
-}				
-					</code>
-				</pre>
-			</div>
-		</div>
-
-	</body>
-</html>
+		public CreatePostInputValidator()
+		{
+			RuleFor(c=>c.Title)
+				.NotEmpty()
+				.WithMessage("Title is required");				
+		}					
+	}				

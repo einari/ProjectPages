@@ -146,22 +146,14 @@
     <Content Include="features\samples\samples.html" />
     <Content Include="features\samples\index.html" />
     <Content Include="features\samples\index.js" />
-    <Content Include="features\samples\commands\command.html" />
-    <Content Include="features\samples\commands\command.js" />
-    <Content Include="features\samples\validation\commandBusinessValidator.html" />
-    <Content Include="features\samples\validation\commandBusinessValidator.js" />
-    <Content Include="features\samples\validation\commandInputValidator.html" />
-    <Content Include="features\samples\validation\commandInputValidator.js" />
-    <Content Include="features\samples\domain\aggregatedRoot.html" />
-    <Content Include="features\samples\domain\aggregatedRoot.js" />
-    <Content Include="features\samples\events\event.html" />
-    <Content Include="features\samples\events\event.js" />
-    <Content Include="features\samples\commands\commandHandler.html" />
-    <Content Include="features\samples\commands\commandHandler.js" />
-    <Content Include="features\samples\validation\chapterValidator.html" />
-    <Content Include="features\samples\validation\chapterValidator.js" />
     <Content Include="scripts\marked.js" />
     <Content Include="content\Specifications.txt" />
+    <Content Include="features\samples\commands\commandHandler.txt" />
+    <Content Include="features\samples\domain\aggregatedRoot.txt" />
+    <Content Include="features\samples\events\event.txt" />
+    <Content Include="features\samples\validation\chapterValidator.txt" />
+    <Content Include="features\samples\validation\commandBusinessValidator.txt" />
+    <Content Include="features\samples\validation\commandInputValidator.txt" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataServices\Routes.cs" />
@@ -186,5 +178,8 @@
     <Folder Include="features\samples\domain\" />
     <Folder Include="features\samples\events\" />
     <Folder Include="content\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="features\samples\commands\command.txt" />
   </ItemGroup>
 </Project>

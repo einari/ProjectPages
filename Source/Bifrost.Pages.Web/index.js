@@ -23,6 +23,7 @@
 		  */
 		});		
 		
+		
 		$.get("content/Specifications.txt", function(e) {
 			var markUp = $("<div/>").append($(marked(e)));
 			

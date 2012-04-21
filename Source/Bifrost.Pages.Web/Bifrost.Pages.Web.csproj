@@ -161,6 +161,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="RedirectModule.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

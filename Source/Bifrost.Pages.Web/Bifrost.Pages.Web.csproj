@@ -155,6 +155,7 @@
     <Content Include="features\samples\validation\commandBusinessValidator.txt" />
     <Content Include="features\samples\validation\commandInputValidator.txt" />
     <Content Include="features\samples\commands\command.txt" />
+    <Content Include="img\pattern_40.gif" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataServices\Routes.cs" />

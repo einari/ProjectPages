@@ -7,6 +7,7 @@
 
 	Bifrost.features.featureManager.get("samples").defineViewModel(function () {
 		var self = this;
+		$(".collapse").collapse();
 		
 		this.sampleGroups = ko.observableArray([
 			new Group("commands",["command", "commandHandler"]),

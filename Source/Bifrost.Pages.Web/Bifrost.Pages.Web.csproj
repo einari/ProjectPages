@@ -156,6 +156,7 @@
     <Content Include="features\samples\validation\commandInputValidator.txt" />
     <Content Include="features\samples\commands\command.txt" />
     <Content Include="img\pattern_40.gif" />
+    <Content Include="scripts\bootstrap-collapse.js" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataServices\Routes.cs" />

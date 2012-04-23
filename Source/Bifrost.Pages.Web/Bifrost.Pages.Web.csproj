@@ -133,6 +133,15 @@
     <Content Include="features\documentation\content\Validation\CommandInputValidator\sample.txt" />
     <Content Include="features\documentation\content\Validation\ChapterValidator\sample.txt" />
     <Content Include="features\documentation\content\events\Event\sample.txt" />
+    <Content Include="features\documentation\content\Backend\Command\about.txt" />
+    <Content Include="features\documentation\content\Backend\Command\sample.txt" />
+    <Content Include="features\documentation\content\Backend\CommandHandler\about.txt" />
+    <Content Include="features\documentation\content\Domain\AggregatedRoot\about.txt" />
+    <Content Include="features\documentation\content\events\Event\about.txt" />
+    <Content Include="features\documentation\content\Validation\ChapterValidator\about.txt" />
+    <Content Include="features\documentation\content\Validation\CommandBusinessValidator\about.txt" />
+    <Content Include="features\documentation\content\Validation\CommandInputValidator\about.txt" />
+    <Content Include="features\documentation\content\General\CQRS\about.txt" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
@@ -170,16 +179,5 @@
     <Folder Include="features\documentation\content\Validation\CommandInputValidator\" />
     <Folder Include="features\documentation\content\Validation\ChapterValidator\" />
     <Folder Include="features\documentation\content\events\Event\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="features\documentation\content\Backend\Command\about.txt" />
-    <None Include="features\documentation\content\Backend\Command\sample.txt" />
-    <None Include="features\documentation\content\Backend\CommandHandler\about.txt" />
-    <None Include="features\documentation\content\Domain\AggregatedRoot\about.txt" />
-    <None Include="features\documentation\content\Validation\ChapterValidator\about.txt" />
-    <None Include="features\documentation\content\Validation\CommandBusinessValidator\about.txt" />
-    <None Include="features\documentation\content\Validation\CommandInputValidator\about.txt" />
-    <None Include="features\documentation\content\General\CQRS\about.txt" />
-    <None Include="features\documentation\content\events\Event\about.txt" />
   </ItemGroup>
 </Project>

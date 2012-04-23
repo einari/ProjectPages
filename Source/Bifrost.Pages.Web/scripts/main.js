@@ -27,13 +27,13 @@ require(
 	function() {
 		require(["jquery.history"],
 		    function () {
-		        require(["knockout.mapping", "bifrost", "bootstrap", "prettify", "marked", "bootstrap-collapse"],
+		        require(["knockout.mapping", "bifrost", "bootstrap", "prettify", "marked"],
 		            function () {
 		                Bifrost.features.featureMapper.add("admin/{feature}/{subFeature}", "/administration/{feature}/{subFeature}", false);
 		                Bifrost.features.featureMapper.add("admin/{feature}", "/administration/{feature}", true);
 
 
-		                Bifrost.features.featureMapper.add("{feature}/{sampleGroup}/{sample}", "/Features/samples/{sampleGroup}/{sample}", false);
+		                Bifrost.features.featureMapper.add("{feature}/{sampleGroup}/{sample}", "/Features/documentation/{sampleGroup}/{sample}", false);
 
 		                Bifrost.features.featureMapper.add("{feature}/{subFeature}", "/Features/{feature}/{subFeature}", false);
 		                Bifrost.features.featureMapper.add("{feature}", "/Features/{feature}", true);

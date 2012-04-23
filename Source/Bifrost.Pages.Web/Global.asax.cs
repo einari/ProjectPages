@@ -3,29 +3,14 @@ using System.Collections;
 using System.ComponentModel;
 using System.Web;
 using System.Web.SessionState;
-using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-
-//[assembly: WebActivator.PreApplicationStartMethod(typeof(BifrostPages.Global), "Start")]
-[assembly: WebActivator.PostApplicationStartMethod(typeof(BifrostPages.Global), "Start")]
+using System.Web.Routing;
 
 namespace BifrostPages
 {
 	public class Global : System.Web.HttpApplication
 	{
-		public static void Start()
-		{
-				var instance = HttpContext.Current.ApplicationInstance;
-			var i=0;
-			i++;
-			//DynamicModuleUtility.RegisterModule()
-		}
-		
-		
-		
 		protected virtual void Application_Start (Object sender, EventArgs e)
 		{
-			var i=0;
-			i++;
 			
 		}
 		

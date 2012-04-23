@@ -6,13 +6,6 @@ using System.Web.UI;
 
 namespace BifrostPages
 {
-	public class Directory
-	{
-		public string Path { get; set; }
-		
-		public Directory[] Directories { get; set; }
-	}
-	
 	
 	public class DocumentationContent : System.Web.IHttpHandler
 	{
@@ -25,6 +18,7 @@ namespace BifrostPages
 		
 		public virtual void ProcessRequest (HttpContext context)
 		{
+			/*
 			var folder = context.Request.MapPath ("~/features/documentation/content");
 			
 			var files =
@@ -36,7 +30,7 @@ namespace BifrostPages
 				
 			
 			}
-			
+			*/
 			
 			
 			

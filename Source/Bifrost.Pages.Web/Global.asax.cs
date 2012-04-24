@@ -11,7 +11,7 @@ namespace BifrostPages
 	{
 		protected virtual void Application_Start (Object sender, EventArgs e)
 		{
-			
+			DocumentationContent.Initialize();
 		}
 		
 		protected virtual void Session_Start (Object sender, EventArgs e)

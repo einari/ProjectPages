@@ -37,8 +37,9 @@ namespace BifrostPages
 		
 		public static void Initialize()
 		{
+			//var rootSha = GetRootSha();
 			var groups = new List<Group>();
-			var groupsAsJson = ShowTree("3b998fe2271450689072c0ed790af360495d173");
+			var groupsAsJson = ShowTree("eb70ad92910ff33faf99b1b213a03557b485fbf4"); //3b998fe2271450689072c0ed790af360495d173");
 			foreach( var groupAsJson in groupsAsJson["tree"].Children() )
 			{
 				var group = new Group {
@@ -90,10 +91,26 @@ namespace BifrostPages
 			_structure = JsonConvert.SerializeObject(groups, settings);
 		}
 		
+	
+		static string GetRootSha()
+		{
+			var url = "http://github.com/api/v2/json/commits/list/dolittlestudios/bifrost-pages/master";
+			var result = PerformRequest(url);
+			var sha = result["commits"].Children().First()["parents"].Children().First()["id"].Value<string>();
+			
+			return string.Empty;
+		}
 		
 		static JObject ShowTree(string parent)
 		{
 			var url = "http://github.com/api/v2/json/tree/show/dolittlestudios/bifrost-pages/"+parent;
+			return PerformRequest(url);
+		}
+		
+		
+		static JObject PerformRequest(string url)
+		{
+			
 			var request = WebRequest.Create (url);
 			var response = request.GetResponse();
 			var stream = response.GetResponseStream();
@@ -112,6 +129,7 @@ namespace BifrostPages
 			var json = content.ToString();
 			var obj = (JObject)JsonConvert.DeserializeObject(json);
 			return obj;
+			
 		}
 		
 

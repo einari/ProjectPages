@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
+using System.Text;
 
 namespace BifrostPages
 {
@@ -95,16 +96,22 @@ namespace BifrostPages
 			var url = "http://github.com/api/v2/json/tree/show/dolittlestudios/bifrost-pages/"+parent;
 			var request = WebRequest.Create (url);
 			var response = request.GetResponse();
-			using( var stream = response.GetResponseStream() ) 
-			{
-				var content = new byte[stream.Length];
-				stream.Read (content, 0, content.Length);
-				var json = System.Text.UTF8Encoding.UTF8.GetString (content);
-				var obj = (JObject)JsonConvert.DeserializeObject(json);
-				return obj;
-			}
+			var stream = response.GetResponseStream();
 			
-			return new JObject();
+			var buffer = new byte[8192];
+			var content = new StringBuilder();
+			var count = 0;
+			do
+			{
+				count = stream.Read(buffer,0,buffer.Length);
+				if( count != 0 )
+					content.Append(UTF8Encoding.UTF8.GetString (buffer));
+			} while( count > 0 );
+
+				
+			var json = content.ToString();
+			var obj = (JObject)JsonConvert.DeserializeObject(json);
+			return obj;
 		}
 		
 

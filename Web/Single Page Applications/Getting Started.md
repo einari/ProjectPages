@@ -1,4 +1,5 @@
 Bifrost has a dependency on the following JavaScript projects : 
 
-[Knockout.js](knockoutjs.com/)
-[History.js](https://github.com/balupton/History.js/)
+[Knockout.js](http://knockoutjs.com/)
+
+[History.js](http://github.com/balupton/History.js/)

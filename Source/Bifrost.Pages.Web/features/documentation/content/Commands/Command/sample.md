@@ -1,3 +1,4 @@
+Test
 
 	public class CreatePost : Command
 	{

@@ -2,8 +2,19 @@ The composition engine in Bifrost is built around the concept of a feature. A fe
 
 To configure your conventions for discovering, put the following JavaScript initialization code as soon as your Bifrost JS file has been loaded.
 
-	Bifrost.features.featureMapper.add("{feature}/{subFeature}", "/Features/{feature}/{subFeature}", false);
-	Bifrost.features.featureMapper.add("{feature}", "/Features/{feature}", true);
+	Bifrost.features.featureMapper.add(
+		"{feature}", 				// Source name
+		"/Features/{feature}", 		// Target Url with expansion
+		true);						// Default map
+
+If you want to specify the name of file to be resolved from a placeholder, you can do as follows.
+
+
+	Bifrost.features.featureMapper.add(
+		"{feature}/{subFeature}", 			// Source name
+		"/Features/{feature}/{subFeature}", // Target Url with expansion
+		false);								// Not a default map
+		
 
 When the document is ready, Bifrost will locate all elements in the document with a **data-feature** attribute and start resolving these features through the featureManager.
 

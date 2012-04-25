@@ -134,6 +134,7 @@
     <Content Include="features\documentation\index.js" />
     <Content Include="features\documentation\DocumentationContent.ashx" />
     <Content Include="features\documentation\ElementLoader.ashx" />
+    <Content Include="features\documentation\ResetContent.ashx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
@@ -145,6 +146,9 @@
     </Compile>
     <Compile Include="features\documentation\ElementLoader.ashx.cs">
       <DependentUpon>ElementLoader.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="features\documentation\ResetContent.ashx.cs">
+      <DependentUpon>ResetContent.ashx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

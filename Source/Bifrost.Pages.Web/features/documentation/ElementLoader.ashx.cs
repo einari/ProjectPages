@@ -3,6 +3,7 @@ using System.Web;
 using System.Web.UI;
 using System.Net;
 using System.Text;
+using MarkdownSharp;
 
 namespace BifrostPages
 {
@@ -34,8 +35,13 @@ namespace BifrostPages
 						content.Append(UTF8Encoding.UTF8.GetString (buffer));
 				} while( count > 0 );
 				
+				
+				var markdown = new Markdown();
+				var transformed = markdown.Transform(content.ToString ());
+				
+				context.Response.Charset = "UTF-8";
 				context.Response.ContentType = "text/plain";
-				context.Response.Write (content.ToString());
+				context.Response.Write (transformed);
 			}
 		}
 	}

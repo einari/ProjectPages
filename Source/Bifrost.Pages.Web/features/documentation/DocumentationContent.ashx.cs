@@ -37,9 +37,10 @@ namespace BifrostPages
 		
 		public static void Initialize()
 		{
-			//var rootSha = GetRootSha();
+			var rootSha = GetRootSha();
+			var contentSha = GetContentSha(rootSha);
 			var groups = new List<Group>();
-			var groupsAsJson = ShowTree("eb70ad92910ff33faf99b1b213a03557b485fbf4"); //3b998fe2271450689072c0ed790af360495d173");
+			var groupsAsJson = ShowTree(contentSha); //"eb70ad92910ff33faf99b1b213a03557b485fbf4"); //3b998fe2271450689072c0ed790af360495d173");
 			foreach( var groupAsJson in groupsAsJson["tree"].Children() )
 			{
 				var group = new Group {
@@ -91,26 +92,41 @@ namespace BifrostPages
 			_structure = JsonConvert.SerializeObject(groups, settings);
 		}
 		
+		static string GetShaFromString(string input, string identifier)
+		{
+			var start = input.IndexOf(identifier)+identifier.Length;
+			var end = input.IndexOf("\"",start);
+			var sha = input.Substring(start, end-start);
+			return sha;
+		}
+		
 	
 		static string GetRootSha()
 		{
 			var url = "http://github.com/api/v2/json/commits/list/dolittlestudios/bifrost-pages/master";
-			var result = PerformRequest(url);
-			var sha = result["commits"].Children().First()["parents"].Children().First()["id"].Value<string>();
-			
-			return string.Empty;
+			var jsonString = GetJsonString(url);
+			var sha = GetShaFromString(jsonString,"\"id\":\"");
+			return sha;
 		}
 		
 		static JObject ShowTree(string parent)
 		{
 			var url = "http://github.com/api/v2/json/tree/show/dolittlestudios/bifrost-pages/"+parent;
-			return PerformRequest(url);
+			return GetJson(url);
+		}
+		
+		static string GetContentSha(string commitSha)
+		{
+			var url = "http://github.com/api/v2/json/tree/full/dolittlestudios/bifrost-pages/"+commitSha;
+			var jsonString = GetJsonString (url);
+			var sha = GetShaFromString(jsonString, "\"name\":\"Source/Bifrost.Pages.Web/features/documentation/content\",\"size\":0,\"sha\":\"");
+			return sha;
 		}
 		
 		
-		static JObject PerformRequest(string url)
+		
+		static string GetJsonString(string url)
 		{
-			
 			var request = WebRequest.Create (url);
 			var response = request.GetResponse();
 			var stream = response.GetResponseStream();
@@ -127,6 +143,13 @@ namespace BifrostPages
 
 				
 			var json = content.ToString();
+			return json;
+		}
+		
+		
+		static JObject GetJson(string url)
+		{
+			var json = GetJsonString (url);
 			var obj = (JObject)JsonConvert.DeserializeObject(json);
 			return obj;
 			

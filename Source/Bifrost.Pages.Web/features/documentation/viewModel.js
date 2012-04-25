@@ -31,7 +31,8 @@
 		
 		this.loadSample = function(file) {
 			$.get("/features/documentation/ElementLoader.ashx?file="+file, function(e) {
-				var markUp = $("<div/>").append($(marked(e)));
+				var markUp = $("<div/>").append(e);
+				//$(marked(e)));
 				var codeBlocks = $("code",markUp);
 				
 				$.each(codeBlocks, function(index, item) {

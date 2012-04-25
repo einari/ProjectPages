@@ -1,15 +1,12 @@
-using System;
-using System.Web;
-using System.Web.UI;
 using System.Net;
 using System.Text;
+using System.Web;
 using MarkdownSharp;
 
 namespace BifrostPages
 {
 	public class ElementLoader : System.Web.IHttpHandler
 	{
-		
 		public virtual bool IsReusable {
 			get {
 				return true;

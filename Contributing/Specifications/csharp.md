@@ -1,8 +1,4 @@
-Bifrost has been written with specifications supporting and guaranteeing the quality of the code, this instead of using more traditional unit tests. 
-
-For the C# code, [MSpec](https://github.com/machine/machine.specifications) has been chosen with a certain style. JavaScript code is using [Jasmine](http://pivotal.github.com/jasmine/) with a similar style and structure as with the C# code.
-
-As with all code in Bifrost, you will find small specialized specification classes or functions in JavaScript. These are written in a specifying way using the Gherkin construct (given, when, then) found in [Behavior Driven Development](http://en.wikipedia.org/wiki/Behavior_Driven_Development).
+All the C# code has been specified by using  [MSpec](https://github.com/machine/machine.specifications) with an adapted style. 
 
 Since we're using this for specifying units as well, we have a certain structure to reflect this. The structure is reflected in the folder structure and naming of files. 
 

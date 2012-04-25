@@ -1,4 +1,4 @@
-In JavaScript you'll find a very similar structure to what is used in CSharp, the folder structure is pretty much the same, except for the given folder. And since we've for now settled on Jasmine, the code is a bit different.
+All JavaScript code has been specified using [Jasmine](http://pivotal.github.com/jasmine/) with a similar style and structure as with the C# code. The folder structure is pretty much the same, except for the given folder. And since we've for now settled on Jasmine, the code is a bit different.
 
 
 	describe("when creating with configuration", function () {

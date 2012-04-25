@@ -68,7 +68,7 @@ namespace BifrostPages
 							 	baseUrl,
 							 	group.Name,
 							 	topic.Name,
-							 	elementAsJson["name"].Value<string>().ToLowerInvariant()
+							 	elementAsJson["name"].Value<string>()
 							 	);
 						
 						

@@ -105,7 +105,7 @@ namespace BifrostPages
 		{
 			var url = "http://github.com/api/v2/json/commits/list/dolittlestudios/bifrost-documentation/master";
 			var jsonString = GetJsonString(url);
-			var sha = GetShaFromString(jsonString,"\"id\":\"");
+			var sha = GetShaFromString(jsonString,"\"tree\":\"");
 			return sha;
 		}
 		

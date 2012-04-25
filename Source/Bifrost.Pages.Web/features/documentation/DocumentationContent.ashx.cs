@@ -79,10 +79,10 @@ namespace BifrostPages
 						elements.Add (element);
 					}
 					
-					topic.Elements = elements.ToArray ();
+					topic.Elements = elements.OrderBy(e=>e.Name).ToArray ();
 				}
 				
-				group.Topics = topics.ToArray ();
+				group.Topics = topics.OrderBy(e=>e.Name).ToArray ();
 			}
 			
 			var settings = new JsonSerializerSettings()

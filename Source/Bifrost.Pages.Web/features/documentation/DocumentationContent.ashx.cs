@@ -38,7 +38,7 @@ namespace BifrostPages
 		public static void Initialize()
 		{
 			var rootSha = GetRootSha();
-			var contentSha = GetContentSha(rootSha);
+			var contentSha = rootSha; //GetContentSha(rootSha);
 			var groups = new List<Group>();
 			var groupsAsJson = ShowTree(contentSha); //"eb70ad92910ff33faf99b1b213a03557b485fbf4"); //3b998fe2271450689072c0ed790af360495d173");
 			foreach( var groupAsJson in groupsAsJson["tree"].Children() )
@@ -62,9 +62,9 @@ namespace BifrostPages
 					foreach( var elementAsJson in elementsAsJson["tree"].Children () )
 					{
 						var fileName = elementAsJson["name"].Value<string>();
-						var baseUrl = "https://raw.github.com/dolittlestudios/Bifrost-Pages/master/Source/Bifrost.Pages.Web/";
+						var baseUrl = "https://raw.github.com/dolittlestudios/Bifrost-Documentation/master"; ///Source/Bifrost.Pages.Web/";
 						var file = string.Format
-							("{0}/features/documentation/content/{1}/{2}/{3}",
+							("{0}/{1}/{2}/{3}", // features/documentation/content
 							 	baseUrl,
 							 	group.Name,
 							 	topic.Name,
@@ -103,7 +103,7 @@ namespace BifrostPages
 	
 		static string GetRootSha()
 		{
-			var url = "http://github.com/api/v2/json/commits/list/dolittlestudios/bifrost-pages/master";
+			var url = "http://github.com/api/v2/json/commits/list/dolittlestudios/bifrost-documentation/master";
 			var jsonString = GetJsonString(url);
 			var sha = GetShaFromString(jsonString,"\"id\":\"");
 			return sha;
@@ -111,13 +111,13 @@ namespace BifrostPages
 		
 		static JObject ShowTree(string parent)
 		{
-			var url = "http://github.com/api/v2/json/tree/show/dolittlestudios/bifrost-pages/"+parent;
+			var url = "http://github.com/api/v2/json/tree/show/dolittlestudios/bifrost-documentation/"+parent;
 			return GetJson(url);
 		}
 		
 		static string GetContentSha(string commitSha)
 		{
-			var url = "http://github.com/api/v2/json/tree/full/dolittlestudios/bifrost-pages/"+commitSha;
+			var url = "http://github.com/api/v2/json/tree/full/dolittlestudios/bifrost-documentation/"+commitSha;
 			var jsonString = GetJsonString (url);
 			var sha = GetShaFromString(jsonString, "\"name\":\"Source/Bifrost.Pages.Web/features/documentation/content\",\"size\":0,\"sha\":\"");
 			return sha;

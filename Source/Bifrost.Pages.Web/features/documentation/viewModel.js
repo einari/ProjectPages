@@ -69,7 +69,7 @@
 				  reload: true,
 				  config: function () {  
 				    this.page.identifier = self.commentIdentifier();  
-				    //this.page.url = "http://example.com/#!newthread";
+				    this.page.url = "http://bifrost.dolittle.com/documentation?group="+self.currentGroup().name()+"&topic="+self.currentTopic().name()+"&element="+self.currentElement().name();
 				  }
 				});				
 				

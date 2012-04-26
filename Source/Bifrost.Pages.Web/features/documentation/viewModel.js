@@ -65,11 +65,15 @@
 				
 				self.content($(markUp).html());
 				
+				var identifier = self.currentGroup().name()+self.currentTopic().name()+self.currentElement().name();
+				identifier = self.commentIdentifier();
+						
+				
 				DISQUS.reset({
 				  reload: true,
 				  config: function () {  
-				    this.page.identifier = self.commentIdentifier();  
-				    this.page.URL = "http://bifrost.dolittle.com/documentation?group="+self.currentGroup().name()+"&topic="+self.currentTopic().name()+"&element="+self.currentElement().name();
+				    this.page.identifier = identifier+" ";  
+				    this.page.url = "http://bifrost.dolittle.com/documentation/#!"+identifier;
 				  }
 				});				
 				

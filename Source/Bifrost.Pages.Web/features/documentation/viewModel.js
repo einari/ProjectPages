@@ -68,7 +68,7 @@
 				DISQUS.reset({
 				  reload: true,
 				  config: function () {  
-				    this.page.identifier = self.commentIdentifier;  
+				    this.page.identifier = self.commentIdentifier();  
 				    //this.page.url = "http://example.com/#!newthread";
 				  }
 				});				

@@ -45,6 +45,9 @@
 				</header>	
 		
 				<div data-bind="html: content"></div>
+		
+				<div id="disqus_thread"></div>
+				<div data-bind="disqus: { identifier: currentGroup().name() + '_' + currentTopic().name() + '_' + currentElement().name() }"></div>
 			</div>
 		</div>
 		

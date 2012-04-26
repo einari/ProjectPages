@@ -46,9 +46,9 @@
 		
 				<div data-bind="html: content"></div>
 		
-				<div id="disqus_thread"></div>
+				<div id="disqus_thread" data-bind="visible:hasSelectedContent"></div>
 		
-				<script type="text/javascript" data-bind="visible:hasSelectedContent">
+				<script type="text/javascript">
 				    var disqus_shortname = 'bifrost'; 
 				
 				    (function() {

@@ -66,14 +66,14 @@
 				self.content($(markUp).html());
 				
 				var identifier = self.currentGroup().name()+self.currentTopic().name()+self.currentElement().name();
-				identifier = self.commentIdentifier();
+				identifier = self.commentIdentifier().replace(" ","_").replace("%20","_");
 						
 				
 				DISQUS.reset({
 				  reload: true,
 				  config: function () {  
 				    this.page.identifier = identifier+" ";  
-				    this.page.url = "http://bifrost.dolittle.com/documentation/#!"+identifier;
+				    //this.page.url = "http://bifrost.dolittle.com/documentation/#!"+identifier;
 				  }
 				});				
 				

@@ -16,6 +16,8 @@ namespace BifrostPages
 	{
 		public string Name { get; set; }
 		public string File { get; set; }
+		public string Author { get; set; }
+		public string LastChanged { get; set; }
 	}
 	
 	public class Topic
@@ -72,9 +74,25 @@ namespace BifrostPages
 							 	);
 						
 						
+						var commitUrl = 
+							"http://github.com/api/v2/json/commits/list/dolittlestudios/bifrost-documentation/master/"+
+								group.Name+"/"+topic.Name+"/"+fileName;
+						
+						
+						var commitsAsJson = GetJson(commitUrl);
+						
+						var lastCommit = commitsAsJson["commits"].Children().First();
+						var date = DateTime.Parse(lastCommit["committed_date"].Value<string>());
+						var authorName = lastCommit["author"]["name"].Value<string>();
+						var committedDate = string.Format("{0} - {1}",
+								date.ToLongDateString(),
+						        date.ToString ("HH:mm"));
+							
 						var element = new Element {
 							Name = Path.GetFileNameWithoutExtension(fileName),
-							File = file
+							File = file,
+							Author = authorName,
+							LastChanged = committedDate
 						};
 						elements.Add (element);
 					}

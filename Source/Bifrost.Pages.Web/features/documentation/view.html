@@ -43,7 +43,12 @@
 						</ul>
 					</div>
 				</header>	
-		
+
+				<div data-bind="visible: hasAuthorInfo">
+					<h6>Author : <span data-bind="text: currentElement().author"></span></h6>
+					<h6>Last changed : <span data-bind="text: currentElement().lastChanged"></span></h6>
+				</div>
+				<br>
 				<div data-bind="html: content"></div>
 				<br>
 				<br>

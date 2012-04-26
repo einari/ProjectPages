@@ -18,8 +18,15 @@
 		
 		
 		this.currentElement = ko.observable({
-			name: ko.observable("")
+			name: ko.observable(""),
+			author: ko.observable(""),
+			lastChanged: ko.observable(""),
 		});
+		
+		this.hasAuthorInfo = ko.computed(function() {
+			return self.currentElement().author().length > 0;
+		});
+		
 		this.currentGroup = ko.observable({
 			name: ko.observable("")
 		});

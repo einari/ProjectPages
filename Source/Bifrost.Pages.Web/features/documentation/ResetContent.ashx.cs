@@ -1,6 +1,5 @@
-using System;
 using System.Web;
-using System.Web.UI;
+using System.Threading.Tasks;
 
 namespace BifrostPages
 {
@@ -15,7 +14,7 @@ namespace BifrostPages
 		
 		public virtual void ProcessRequest (HttpContext context)
 		{
-			DocumentationContent.Initialize();
+			Parallel.Invoke (() => DocumentationContent.Generate ());
 		}
 	}
 }

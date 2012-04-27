@@ -35,61 +35,88 @@ namespace BifrostPages
 	
 	public class DocumentationContent : System.Web.IHttpHandler
 	{
+		const string FileName	= "Structure.json";
+		
 		static string _structure = null;
 		
-		public static void Initialize()
+		public static void Initialize ()
 		{
-			var rootSha = GetRootSha();
+			if (_structure == null) 
+				Load ();
+			
+			if (_structure == null)
+				Generate ();
+		}
+		
+		static string GetFileName ()
+		{
+			return HttpContext.Current.Server.MapPath ("~/App_Data/" + FileName);
+		}
+		
+		static void Load ()
+		{
+			var fileName = GetFileName ();
+			if (File.Exists (fileName))
+				_structure = File.ReadAllText (fileName);
+			
+		}
+		
+		static void Save ()
+		{
+			var fileName = GetFileName ();
+			File.WriteAllText (fileName, _structure);
+		}
+		
+		public static void Generate ()
+		{
+			var rootSha = GetRootSha ();
 			var contentSha = rootSha; //GetContentSha(rootSha);
-			var groups = new List<Group>();
-			var groupsAsJson = ShowTree(contentSha); //"eb70ad92910ff33faf99b1b213a03557b485fbf4"); //3b998fe2271450689072c0ed790af360495d173");
-			foreach( var groupAsJson in groupsAsJson["tree"].Children() )
-			{
+			var groups = new List<Group> ();
+			var groupsAsJson = ShowTree (contentSha); //"eb70ad92910ff33faf99b1b213a03557b485fbf4"); //3b998fe2271450689072c0ed790af360495d173");
+			foreach (var groupAsJson in groupsAsJson["tree"].Children()) {
 				var group = new Group {
-					Name = groupAsJson["name"].Value<string>()
+					Name = groupAsJson ["name"].Value<string> ()
 				};
 				groups.Add (group);
 				
-				var topics = new List<Topic>();
-				var topicsAsJson = ShowTree(groupAsJson["sha"].Value<string>());
-				foreach( var topicAsJson in topicsAsJson["tree"].Children () ) 
-				{
+				var topics = new List<Topic> ();
+				var topicsAsJson = ShowTree (groupAsJson ["sha"].Value<string> ());
+				foreach (var topicAsJson in topicsAsJson["tree"].Children ()) {
 					var topic = new Topic {
-						Name = topicAsJson["name"].Value<string>()
+						Name = topicAsJson ["name"].Value<string> ()
 					};
-					topics.Add(topic);
+					topics.Add (topic);
 					
-					var elements = new List<Element>();
-					var elementsAsJson = ShowTree(topicAsJson["sha"].Value<string>());
-					foreach( var elementAsJson in elementsAsJson["tree"].Children () )
-					{
-						var fileName = elementAsJson["name"].Value<string>();
+					var elements = new List<Element> ();
+					var elementsAsJson = ShowTree (topicAsJson ["sha"].Value<string> ());
+					foreach (var elementAsJson in elementsAsJson["tree"].Children ()) {
+						var fileName = elementAsJson ["name"].Value<string> ();
 						var baseUrl = "https://raw.github.com/dolittlestudios/Bifrost-Documentation/master"; ///Source/Bifrost.Pages.Web/";
 						var file = string.Format
 							("{0}/{1}/{2}/{3}", // features/documentation/content
 							 	baseUrl,
 							 	group.Name,
 							 	topic.Name,
-							 	elementAsJson["name"].Value<string>()
+							 	elementAsJson ["name"].Value<string> ()
 							 	);
 						
 						
 						var commitUrl = 
-							"http://github.com/api/v2/json/commits/list/dolittlestudios/bifrost-documentation/master/"+
-								group.Name+"/"+topic.Name+"/"+fileName;
+							"http://github.com/api/v2/json/commits/list/dolittlestudios/bifrost-documentation/master/" +
+								group.Name + "/" + topic.Name + "/" + fileName;
 						
 						
-						var commitsAsJson = GetJson(commitUrl);
+						var commitsAsJson = GetJson (commitUrl);
 						
-						var lastCommit = commitsAsJson["commits"].Children().First();
-						var date = DateTime.Parse(lastCommit["committed_date"].Value<string>());
-						var authorName = lastCommit["author"]["name"].Value<string>();
-						var committedDate = string.Format("{0} - {1}",
-								date.ToLongDateString(),
+						var lastCommit = commitsAsJson ["commits"].Children ().First ();
+						var date = DateTime.Parse (lastCommit ["committed_date"].Value<string> ());
+						var authorName = lastCommit ["author"] ["name"].Value<string> ();
+						var committedDate = string.Format ("{0} - {1}",
+								date.ToLongDateString (),
 						        date.ToString ("HH:mm"));
 							
 						var element = new Element {
-							Name = Path.GetFileNameWithoutExtension(fileName),
+							Name = Path.GetFileNameWithoutExtension (fileName),
 							File = file,
 							Author = authorName,
 							LastChanged = committedDate
@@ -97,20 +124,22 @@ namespace BifrostPages
 						elements.Add (element);
 					}
 					
-					topic.Elements = elements.OrderBy(e=>e.Name).ToArray ();
+					topic.Elements = elements.OrderBy (e => e.Name).ToArray ();
 				}
 				
-				group.Topics = topics.OrderBy(e=>e.Name).ToArray ();
+				group.Topics = topics.OrderBy (e => e.Name).ToArray ();
 			}
 			
-			var settings = new JsonSerializerSettings()
+			var settings = new JsonSerializerSettings ()
             {
-            	ContractResolver = new CamelCasePropertyNamesContractResolver()			
+            	ContractResolver = new CamelCasePropertyNamesContractResolver ()			
 			};
-			_structure = JsonConvert.SerializeObject(groups, settings);
+			_structure = JsonConvert.SerializeObject (groups, settings);
+			
+			Save ();
 		}
 		
-		static string GetShaFromString(string input, string identifier)
+		static string GetShaFromString (string input, string identifier)
 		{
 			var start = input.IndexOf(identifier)+identifier.Length;
 			var end = input.IndexOf("\"",start);

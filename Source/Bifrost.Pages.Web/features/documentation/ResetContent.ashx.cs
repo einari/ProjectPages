@@ -12,6 +12,7 @@ namespace BifrostPages
 			}
 		}
 		
+		
 		public virtual void ProcessRequest (HttpContext context)
 		{
 			Parallel.Invoke (() => DocumentationContent.Generate ());

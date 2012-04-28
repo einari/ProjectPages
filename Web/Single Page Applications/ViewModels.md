@@ -6,7 +6,14 @@ A feature that is loaded by the feature manager will automatically load the file
 		
 	});
 	
-Bifrost will then manage the lifecycle of the ViewModel and automatically hook it up using Knockouts *.applyBinding()* function.
+Bifrost will then manage the lifecycle of the ViewModel and automatically hook it up using Knockouts *.applyBinding()* function. By default the ViewModel is transient and there will be created a new instance everytime a feature is instantiated and put on the page. You can however control the lifecycle by adding a parameter to the definition of a ViewModel. The lifecycle can be set to be singleton, which means that the ViewModel will live in the client till the application is left.
+
+To set the lifecycle to singleton, you will have to pass in an option object with a property called *isSingleton* set to true :
+
+	Bifrost.features.featureManager.get("myFeature").defineViewModel(function () {
+	
+	}, {isSingleton:true});
+
 
 The ViewModel has the Bifrost ViewModel as its prototype, this means that you have a bit of functionality available that you can use inside your ViewModel.
 

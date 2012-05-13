@@ -1,6 +1,6 @@
 Bifrost has a dependency on the following JavaScript projects : 
 
-[jQuery] (http://jquery.com)
+[jQuery](http://jquery.com)
 
 [Knockout.js](http://knockoutjs.com/)
 

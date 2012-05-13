@@ -19,3 +19,9 @@ If you want to specify the name of file to be resolved from a placeholder, you c
 When the document is ready, Bifrost will locate all elements in the document with a **data-feature** attribute and start resolving these features through the featureManager.
 
 	<div data-feature="name of feature"></div>
+	
+It is also possible to bind your feature to a property on the ViewModel, Bifrost provides a [Knockout](http://www.knouckoutjs.com) binding handler called feature. With this you can basically take any container and just have it automatically bound to a property that deals with a state that can then be translated into a feature. 
+
+	<div data-bind="feature: [property to bind to]"></div>
+	
+Ideally the property you would bind to would not be coupled to the direct concept of a feature and its name, but rather use a function to interpret the state in the ViewModel and translate it into the proper feature name.

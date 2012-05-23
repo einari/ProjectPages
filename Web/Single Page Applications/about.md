@@ -1,3 +1,5 @@
 One aspect that Bifrost has focused a lot of energy into, is the support for the growing popularity of doing Single Page Applications on the Web; applications that load a frontpage and basically never does a full post-back to the server to get a a page. This concept pushes more and more responsibility onto the client when it comes to things like rendering and dealing with the client state.
 
 The client side JavaScript library that comes with Bifrost contains a full set of functionality to accommodate building Single Page Applications. Bifrost is built on top of the [MVVM](http://en.wikipedia.org/wiki/MVVM) patterns and focuses on decoupling everything and doing compositions in the view were one focuses on declaratively putting together your decoupled components.
+
+Hello

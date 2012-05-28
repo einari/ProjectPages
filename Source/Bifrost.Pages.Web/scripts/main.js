@@ -16,7 +16,8 @@ require.config({
 	    "bootstrap": "bootstrap",
 	    "bootstrap-collapse": "bootstrap-collapse",
 	    "prettify": "/prettify/prettify",
-	    "marked": "marked"
+	    "marked": "marked",
+	    "markdown": "markdown"
 	}
 });
 
@@ -27,7 +28,7 @@ require(
 	function() {
 		require(["jquery.history"],
 		    function () {
-		        require(["knockout.mapping", "bifrost", "bootstrap", "prettify", "marked"],
+		        require(["knockout.mapping", "bifrost", "bootstrap", "prettify"],
 		            function () {
 		                Bifrost.features.featureMapper.add("admin/{feature}/{subFeature}", "/administration/{feature}/{subFeature}", false);
 		                Bifrost.features.featureMapper.add("admin/{feature}", "/administration/{feature}", true);

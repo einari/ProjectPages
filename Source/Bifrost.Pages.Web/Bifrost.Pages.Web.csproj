@@ -135,6 +135,7 @@
     <Content Include="features\documentation\DocumentationContent.ashx" />
     <Content Include="features\documentation\ElementLoader.ashx" />
     <Content Include="features\documentation\ResetContent.ashx" />
+    <Content Include="scripts\markdown.js" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">

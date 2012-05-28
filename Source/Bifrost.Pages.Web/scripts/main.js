@@ -16,8 +16,7 @@ require.config({
 	    "bootstrap": "bootstrap",
 	    "bootstrap-collapse": "bootstrap-collapse",
 	    "prettify": "/prettify/prettify",
-	    "marked": "marked",
-	    "markdown": "markdown"
+	    "marked": "marked"
 	}
 });
 

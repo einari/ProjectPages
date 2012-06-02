@@ -180,6 +180,11 @@ namespace BifrostPages
 		
 		static string GetJsonString (string url)
 		{
+			var client = new WebClient ();
+			var json = client.DownloadString (new Uri (url));
+			return json;
+			
+			/*
 			var request = WebRequest.Create (url);
 			var response = request.GetResponse();
 			var stream = response.GetResponseStream();
@@ -197,7 +202,7 @@ namespace BifrostPages
 
 				
 			var json = content.ToString();
-			return json;
+			return json;*/
 		}
 		
 		

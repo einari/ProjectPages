@@ -74,7 +74,6 @@
     </VisualStudio>
   </ProjectExtensions>
   <ItemGroup>
-    <Content Include="_Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="index.html" />
     <Content Include="css\bootstrap-responsive.css" />

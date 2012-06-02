@@ -12,7 +12,7 @@ namespace BifrostPages
 		protected virtual void Application_Start (Object sender, EventArgs e)
 		{
 			try {
-			DocumentationContent.Initialize();
+				DocumentationContent.Initialize();
 			} catch {}
 		}
 		

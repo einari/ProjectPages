@@ -1,13 +1,7 @@
 (function (undefined) {
 	Bifrost.features.featureManager.get("documentation").defineViewModel(function () {
 		var self = this;
-		
-		marked.setOptions({
-		  gfm: false,
-		  pedantic: false,
-		  sanitize: true,
-		});		
-		
+				
 		$(".accordion").collapse();
 		
 		this.groups = ko.observableArray();
@@ -53,7 +47,6 @@
 		this.loadSample = function(file) {
 			$.get("/features/documentation/ElementLoader.ashx?file="+file, function(e) {
 				var markUp = $("<div/>").append(e);
-				//$(marked(e)));
 				var codeBlocks = $("code",markUp);
 				
 				$.each(codeBlocks, function(index, item) {

@@ -105,7 +105,7 @@ namespace BifrostPages
 							"http://github.com/api/v2/json/commits/list/dolittlestudios/bifrost-documentation/master/" +
 							group.Name + "/" + topic.Name + "/" + fileName;
 						
-						/*
+						
 						var commitsAsJson = GetJson (commitUrl);
 						
 						var lastCommit = commitsAsJson ["commits"].Children ().First ();
@@ -114,13 +114,13 @@ namespace BifrostPages
 						var committedDate = string.Format ("{0} - {1}",
 								date.ToLongDateString (),
 						        date.ToString ("HH:mm"));
-						*/	
 						
+						/*
 						var authorName = "Unknown";
 						var committedDate = string.Format ("{0} - {1}",
 								DateTime.Now.ToLongDateString (),
 						        DateTime.Now.ToString ("HH:mm"));
-						
+						*/
 						var element = new Element {
 							Name = Path.GetFileNameWithoutExtension (fileName),
 							File = file,
@@ -190,8 +190,9 @@ namespace BifrostPages
 			do
 			{
 				count = stream.Read(buffer,0,buffer.Length);
-				if( count != 0 )
+				if( count > 0 ) {
 					content.Append(UTF8Encoding.UTF8.GetString (buffer));
+				}
 			} while( count > 0 );
 
 				

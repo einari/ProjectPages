@@ -1,0 +1,1 @@
+Since JavaScripts core framework is very limited, Bifrost provides a set of functionality that is commonly used across Bifrost itself but can also be used by your application code.

@@ -15,5 +15,3 @@ An overload of the namespace function can also take a literal object that will d
 	});
 
 Again, the function will not overwrite any existing namespace, and in this particular scenario - it will in fact merge the content with any existing namespaces.
-
-	

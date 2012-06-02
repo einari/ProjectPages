@@ -12,4 +12,6 @@ An anchor tag would then look like this :
 
 	<a data-navigate-to="/some/route">Go here</a>
 	
-Internally Bifrost uses the [Balupton History plugin](https://github.com/balupton/History.js/) if it has been loaded. It provides an abstraction for dealing with the different browsers and how they deal with history. 
+Internally Bifrost uses the [Balupton History plugin](http://github.com/balupton/History.js/) if it has been loaded. It provides an abstraction for dealing with the different browsers and how they deal with history. 
+
+Worth mentioning, this site; the documentation of Bifrost is built on top of Bifrost itself. You can find the project [here](http://github.com/dolittlestudios/bifrost-pages).

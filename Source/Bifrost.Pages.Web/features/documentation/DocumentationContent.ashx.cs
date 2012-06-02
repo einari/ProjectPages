@@ -35,12 +35,14 @@ namespace BifrostPages
 	
 	public class DocumentationContent : System.Web.IHttpHandler
 	{
-		const string FileName	= "Structure.json";
+		static string FileName = "";
 		
 		static string _structure = null;
 		
 		public static void Initialize ()
 		{
+			HttpContext.Current.Server.MapPath ("~/App_Data/Structure.json");
+			
 			if (_structure == null) 
 				Load ();
 			
@@ -48,23 +50,17 @@ namespace BifrostPages
 				Generate ();
 		}
 		
-		static string GetFileName ()
-		{
-			return HttpContext.Current.Server.MapPath ("~/App_Data/" + FileName);
-		}
-		
+	
 		static void Load ()
 		{
-			var fileName = GetFileName ();
-			if (File.Exists (fileName))
-				_structure = File.ReadAllText (fileName);
+			if (File.Exists (FileName))
+				_structure = File.ReadAllText (FileName);
 			
 		}
 		
 		static void Save ()
 		{
-			var fileName = GetFileName ();
-			File.WriteAllText (fileName, _structure);
+			File.WriteAllText (FileName, _structure);
 		}
 		
 		public static void Generate ()

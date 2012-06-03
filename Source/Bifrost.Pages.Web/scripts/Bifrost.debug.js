@@ -1351,7 +1351,7 @@ Bifrost.namespace("Bifrost.navigation", {
             $("a", parent).each(function (index, item) {
 				var href = item.href;
 				if( href.length == 0 ) {
-					href = "/";
+					href = window.location.origin;
 				}
 				var targetUri = Bifrost.Uri.create(href);
 				if( targetUri.isSameAsOrigin ) {

@@ -223,8 +223,7 @@ Bifrost.Uri = (function(window, undefined) {
 		
 			var result = parseUri(location);
 		
-			if( !result.protocol || typeof result.protocol == "undefined" ||
-		 		!result.domain || typeof result.domain == "undefined" ) {
+			if( !result.protocol || typeof result.protocol == "undefined" ) {
 				throw new Bifrost.InvalidUriFormat("Uri ('"+location+"') was in the wrong format");
 			}
 
@@ -236,6 +235,9 @@ Bifrost.Uri = (function(window, undefined) {
 			self.queryString = result.query;
 			self.port = parseInt(result.port);
 			self.parameters = Bifrost.hashString.decode(result.query);
+			
+			self.isSameAsOrigin = (window.location.protocol == result.protocol+":" &&
+				window.location.hostname == self.host); 
 		}
 		
 		this.setLocation(location);
@@ -1347,8 +1349,9 @@ Bifrost.namespace("Bifrost.navigation", {
 	navigationManager: {
 		hookup: function(parent) {
             $("a", parent).each(function (index, item) {
-				var target = item.href.replace("file://","");
-				if( target.indexOf("/") === 0 ) {
+				var targetUri = Bifrost.Uri.create(item.href);
+				if( targetUri.isSameAsOrigin ) {
+					var target = targetUri.path;
 					while( target.indexOf("/") == 0 ) {
 						target = target.substr(1);
 					}
@@ -1357,7 +1360,7 @@ Bifrost.namespace("Bifrost.navigation", {
 				
 					$(this).bind("click", function(e) {
 						e.preventDefault();
-						History.pushState({},"NO TITLE AT THE MOMENT","/"+target);
+						History.pushState({},"","/"+target);
 					});
 				}
 			});

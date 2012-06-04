@@ -8,7 +8,7 @@ So, basically if you put an anchor like this :
 
 	<a href="/some/route">Go here</a>
 	
-It will remain like this so that search engines can crawl your site, but we will hook up the click event and deal with it properly for the user.
+It will remain like this so that search engines can crawl your site, but Bifrost will hook up the click event and deal with it properly for the user.
 	
 Internally Bifrost uses the [Balupton History plugin](http://github.com/balupton/History.js/) if it has been loaded. It provides an abstraction for dealing with the different browsers and how they deal with history. 
 

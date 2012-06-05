@@ -35,12 +35,14 @@ namespace BifrostPages
 	
 	public class DocumentationContent : System.Web.IHttpHandler
 	{
-		const string FileName	= "Structure.json";
+		static string FileName = "";
 		
 		static string _structure = null;
 		
 		public static void Initialize ()
 		{
+			HttpContext.Current.Server.MapPath ("~/App_Data/Structure.json");
+			
 			if (_structure == null) 
 				Load ();
 			
@@ -48,23 +50,17 @@ namespace BifrostPages
 				Generate ();
 		}
 		
-		static string GetFileName ()
-		{
-			return HttpContext.Current.Server.MapPath ("~/App_Data/" + FileName);
-		}
-		
+	
 		static void Load ()
 		{
-			var fileName = GetFileName ();
-			if (File.Exists (fileName))
-				_structure = File.ReadAllText (fileName);
+			if (File.Exists (FileName))
+				_structure = File.ReadAllText (FileName);
 			
 		}
 		
 		static void Save ()
 		{
-			var fileName = GetFileName ();
-			File.WriteAllText (fileName, _structure);
+			File.WriteAllText (FileName, _structure);
 		}
 		
 		public static void Generate ()
@@ -98,12 +94,12 @@ namespace BifrostPages
 							 	group.Name,
 							 	topic.Name,
 							 	elementAsJson ["name"].Value<string> ()
-							 	);
+						);
 						
 						
 						var commitUrl = 
 							"http://github.com/api/v2/json/commits/list/dolittlestudios/bifrost-documentation/master/" +
-								group.Name + "/" + topic.Name + "/" + fileName;
+							group.Name + "/" + topic.Name + "/" + fileName;
 						
 						
 						var commitsAsJson = GetJson (commitUrl);
@@ -114,7 +110,13 @@ namespace BifrostPages
 						var committedDate = string.Format ("{0} - {1}",
 								date.ToLongDateString (),
 						        date.ToString ("HH:mm"));
-							
+						
+						/*
+						var authorName = "Unknown";
+						var committedDate = string.Format ("{0} - {1}",
+								DateTime.Now.ToLongDateString (),
+						        DateTime.Now.ToString ("HH:mm"));
+						*/
 						var element = new Element {
 							Name = Path.GetFileNameWithoutExtension (fileName),
 							File = file,
@@ -172,8 +174,13 @@ namespace BifrostPages
 		
 		
 		
-		static string GetJsonString(string url)
+		static string GetJsonString (string url)
 		{
+			var client = new WebClient ();
+			var json = client.DownloadString (new Uri (url));
+			return json;
+			
+			/*
 			var request = WebRequest.Create (url);
 			var response = request.GetResponse();
 			var stream = response.GetResponseStream();
@@ -184,13 +191,14 @@ namespace BifrostPages
 			do
 			{
 				count = stream.Read(buffer,0,buffer.Length);
-				if( count != 0 )
+				if( count > 0 ) {
 					content.Append(UTF8Encoding.UTF8.GetString (buffer));
+				}
 			} while( count > 0 );
 
 				
 			var json = content.ToString();
-			return json;
+			return json;*/
 		}
 		
 		

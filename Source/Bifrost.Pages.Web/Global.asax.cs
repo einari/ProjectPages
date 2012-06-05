@@ -1,45 +1,36 @@
-using System;
-using System.Collections;
-using System.ComponentModel;
-using System.Web;
-using System.Web.SessionState;
-using System.Web.Routing;
+using Bifrost.Configuration;
+using Bifrost.Web;
+using Bifrost.Execution;
+using Bifrost.Unity;
+using Microsoft.Practices.Unity;
 
 namespace BifrostPages
 {
-	public class Global : System.Web.HttpApplication
+	public class Global : BifrostHttpApplication
 	{
-		protected virtual void Application_Start (Object sender, EventArgs e)
+		public override void OnConfigure (Bifrost.Configuration.IConfigure configure)
 		{
-			DocumentationContent.Initialize();
+			WebConfigurationExtensions.AsSinglePageApplication (configure);
+				
+			
+			base.OnConfigure (configure);
 		}
 		
-		protected virtual void Session_Start (Object sender, EventArgs e)
+		protected override IContainer CreateContainer ()
 		{
+			var unityContainer = new UnityContainer ();
+			var container = new Container (unityContainer);
+			return container;
 		}
 		
-		protected virtual void Application_BeginRequest (Object sender, EventArgs e)
-		{
-		}
 		
-		protected virtual void Application_EndRequest (Object sender, EventArgs e)
+		public override void OnStarted ()
 		{
-		}
-		
-		protected virtual void Application_AuthenticateRequest (Object sender, EventArgs e)
-		{
-		}
-		
-		protected virtual void Application_Error (Object sender, EventArgs e)
-		{
-		}
-		
-		protected virtual void Session_End (Object sender, EventArgs e)
-		{
-		}
-		
-		protected virtual void Application_End (Object sender, EventArgs e)
-		{
+			try {
+				DocumentationContent.Initialize ();
+			} catch {
+			}
+			base.OnStarted ();
 		}
 	}
 }

@@ -103,5 +103,5 @@
 			self.currentElement(element)
 			self.loadSample(element.file());
 		}
-	});
+	},{isSingleton:true});
 })();

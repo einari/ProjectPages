@@ -18,7 +18,8 @@
 		                </a>
 		              </div>
 		
-		              <div data-bind="attr : { id: name }" class="accordion-body collapse" style="height: 0px; ">
+		              <div data-bind="attr : { id: name }" 
+							class="accordion-body collapse" style="height: 0px; ">
 		                <div class="accordion-inner">
 							<ul data-bind="foreach: topics" class="nav nav-pills nav-stacked">
 								<li>
@@ -38,7 +39,14 @@
 					<div class="subnav">
 						<ul class="nav nav-pills" data-bind="foreach: currentTopic().elements">
 							<li>
-								<a href="#" data-bind="text: $data.name, click: $root.selectElement.bind($data, $data)"></a>
+								<a data-bind="text: $data.name, click: $root.selectElement.bind($data, $data), 
+									attr : { 
+										href: 
+											'/Documentation?group='+$root.currentGroup().name() +
+											'&topic='+$root.currentTopic().name() +
+											'&element='+$root.currentElement().name()
+											
+										}"></a>
 							</li>
 						</ul>
 					</div>

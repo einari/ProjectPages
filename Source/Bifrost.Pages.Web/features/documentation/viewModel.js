@@ -8,7 +8,39 @@
 		$.getJSON("features/documentation/DocumentationContent.ashx", function(e) {
 			var groups = ko.mapping.fromJS(e);
 			self.groups(groups);
+			self.initializeFromUrl(groups);
 		});
+		
+		this.initializeFromUrl = function(groups) {
+			if( self.uri.parameters.group ) {
+				$.each(groups(), function(groupIndex, group) {
+					if( group.name() == self.uri.parameters.group ) {
+						self.currentGroup(group);
+
+						if( self.uri.parameters.topic ) {
+							$.each(group.topics(), function(topicIndex, topic) {
+								if( topic.name() == self.uri.parameters.topic ) {
+									self.currentTopic(topic);
+									
+									if( self.uri.parameters.element ) {
+										$.each(topic.elements(), function(elementIndex, element) {
+											if( element.name() == self.uri.parameters.element ) {
+												self.selectElement(element);
+												return;
+											}
+										});
+									}
+									
+									return;
+								}
+							});
+						}
+												
+						return;
+					}
+				});
+			}
+		}
 		
 		
 		this.currentElement = ko.observable({
@@ -95,6 +127,7 @@
 		this.selectElement = function(element) {
 			self.currentElement(element)
 			self.loadSample(element.file());
+			History.pushState({},"","/documentation?group="+self.currentGroup().name()+"&topic="+self.currentTopic().name()+"&element="+self.currentElement().name());
 		}
 	},{isSingleton:true});
 })();

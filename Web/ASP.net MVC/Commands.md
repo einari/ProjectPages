@@ -94,4 +94,3 @@ Your controller becomes a little bit simpler, since we now are dealing with clie
 		return Json(commandResult, JsonRequestBehavior.AllowGet);
 	}
 
-

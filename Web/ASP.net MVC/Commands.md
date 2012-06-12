@@ -61,7 +61,7 @@ The Command Coordinator does in fact return a *CommandResult* instance. This ins
 
 Firstly, *CommandResult* has a boolean telling wether or not it was successfull or not. If it was not, we can check if it was validation that caused it not to succeed or at the last resort see if there was an exception, which is also represented as a property on the *CommandResult*.
 
-Keeping things a bit naïve and simple for now, I will only deal with validation : 
+Keeping things a bit naive and simple for now, I will only deal with validation : 
 
 	public ActionResult CreateUser(CreateUserCommand command)
 	{

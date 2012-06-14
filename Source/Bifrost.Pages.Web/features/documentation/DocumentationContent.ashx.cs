@@ -9,8 +9,6 @@ using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 using System.Text;
-using csharp_github_api;
-using csharp_github_api.Framework;
 
 namespace BifrostPages
 {
@@ -67,19 +65,13 @@ namespace BifrostPages
 		
 		public static void Generate ()
 		{
-			var gitHubSettings = new GitHubApiSettings();
-			gitHubSettings.BaseUrl = "http://github.com/dolittlestudios/bifrost";
-			
-			var g = new Github(gitHubSettings);
-			
-			
 			var rootSha = GetRootSha ();
-			var contentSha = rootSha; //GetContentSha(rootSha);
+			var contentSha = rootSha; 
 			var groups = new List<Group> ();
 			var groupsAsJson = ShowTree (contentSha); //"eb70ad92910ff33faf99b1b213a03557b485fbf4"); //3b998fe2271450689072c0ed790af360495d173");
 			foreach (var groupAsJson in groupsAsJson["tree"].Children()) {
 				var group = new Group {
-					Name = groupAsJson ["name"].Value<string> ()
+					Name = groupAsJson ["path"].Value<string> ()
 				};
 				groups.Add (group);
 				
@@ -87,28 +79,33 @@ namespace BifrostPages
 				var topicsAsJson = ShowTree (groupAsJson ["sha"].Value<string> ());
 				foreach (var topicAsJson in topicsAsJson["tree"].Children ()) {
 					var topic = new Topic {
-						Name = topicAsJson ["name"].Value<string> ()
+						Name = topicAsJson ["path"].Value<string> ()
 					};
 					topics.Add (topic);
 					
 					var elements = new List<Element> ();
 					var elementsAsJson = ShowTree (topicAsJson ["sha"].Value<string> ());
 					foreach (var elementAsJson in elementsAsJson["tree"].Children ()) {
-						var fileName = elementAsJson ["name"].Value<string> ();
+						var fileName = elementAsJson ["path"].Value<string> ();
 						var baseUrl = "https://raw.github.com/dolittlestudios/Bifrost-Documentation/master"; ///Source/Bifrost.Pages.Web/";
 						var file = string.Format
 							("{0}/{1}/{2}/{3}", // features/documentation/content
 							 	baseUrl,
 							 	group.Name,
 							 	topic.Name,
-							 	elementAsJson ["name"].Value<string> ()
+							 	fileName
 						);
 						
+
+#if(false)
+						var commitUrl = "https://api.github.com/repos/dolittlestudios/bifrost-documentation/commits/"+elementAsJson["sha"].Value<string>();
 						
-						var commitUrl = 
+						// https://api.github.com/repos/dolittlestudios/bifrost-documentation/commits/508ab7c6817e974def40cc2a3b1b42a2fd99dd15
+						// https://api.github.com/repos/dolittlestudios/bifrost-documentation/commits/6e1bb6087c82b063d3c1173072b8edecac57a453
+						/*
 							"http://github.com/api/v2/json/commits/list/dolittlestudios/bifrost-documentation/master/" +
 							group.Name + "/" + topic.Name + "/" + fileName;
-						
+						*/
 						
 						var commitsAsJson = GetJson (commitUrl);
 						
@@ -118,13 +115,13 @@ namespace BifrostPages
 						var committedDate = string.Format ("{0} - {1}",
 								date.ToLongDateString (),
 						        date.ToString ("HH:mm"));
-						
-						/*
+		
+#else						
 						var authorName = "Unknown";
 						var committedDate = string.Format ("{0} - {1}",
 								DateTime.Now.ToLongDateString (),
 						        DateTime.Now.ToString ("HH:mm"));
-						*/
+#endif
 						var element = new Element {
 							Name = Path.GetFileNameWithoutExtension (fileName),
 							File = file,
@@ -160,26 +157,18 @@ namespace BifrostPages
 	
 		static string GetRootSha()
 		{
-			var url = "http://github.com/api/v2/json/commits/list/dolittlestudios/bifrost-documentation/master";
-			var jsonString = GetJsonString(url);
-			var sha = GetShaFromString(jsonString,"\"tree\":\"");
+			var commitsUrl = "https://api.github.com/repos/dolittlestudios/bifrost-documentation/commits";
+			var jsonString = GetJsonString(commitsUrl);
+			var sha = GetShaFromString(jsonString,"\"sha\":\"");
 			return sha;
 		}
 		
 		static JObject ShowTree(string parent)
 		{
-			var url = "http://github.com/api/v2/json/tree/show/dolittlestudios/bifrost-documentation/"+parent;
-			return GetJson(url);
+			var url = "https://api.github.com/repos/dolittlestudios/bifrost-documentation/git/trees/"+parent; //+"?recursive=1";
+			var json = GetJson(url);
+			return json;
 		}
-		
-		static string GetContentSha(string commitSha)
-		{
-			var url = "http://github.com/api/v2/json/tree/full/dolittlestudios/bifrost-documentation/"+commitSha;
-			var jsonString = GetJsonString (url);
-			var sha = GetShaFromString(jsonString, "\"name\":\"Source/Bifrost.Pages.Web/features/documentation/content\",\"size\":0,\"sha\":\"");
-			return sha;
-		}
-		
 		
 		
 		static string GetJsonString (string url)
@@ -187,26 +176,6 @@ namespace BifrostPages
 			var client = new WebClient ();
 			var json = client.DownloadString (new Uri (url));
 			return json;
-			
-			/*
-			var request = WebRequest.Create (url);
-			var response = request.GetResponse();
-			var stream = response.GetResponseStream();
-			
-			var buffer = new byte[8192];
-			var content = new StringBuilder();
-			var count = 0;
-			do
-			{
-				count = stream.Read(buffer,0,buffer.Length);
-				if( count > 0 ) {
-					content.Append(UTF8Encoding.UTF8.GetString (buffer));
-				}
-			} while( count > 0 );
-
-				
-			var json = content.ToString();
-			return json;*/
 		}
 		
 		

@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 using System.Text;
+using csharp_github_api;
+using csharp_github_api.Framework;
 
 namespace BifrostPages
 {
@@ -65,6 +67,12 @@ namespace BifrostPages
 		
 		public static void Generate ()
 		{
+			var gitHubSettings = new GitHubApiSettings();
+			gitHubSettings.BaseUrl = "http://github.com/dolittlestudios/bifrost";
+			
+			var g = new Github(gitHubSettings);
+			
+			
 			var rootSha = GetRootSha ();
 			var contentSha = rootSha; //GetContentSha(rootSha);
 			var groups = new List<Group> ();

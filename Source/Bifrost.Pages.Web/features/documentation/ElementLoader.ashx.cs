@@ -2,6 +2,7 @@ using System.Net;
 using System.Text;
 using System.Web;
 using MarkdownSharp;
+using System;
 
 namespace BifrostPages
 {
@@ -35,6 +36,9 @@ namespace BifrostPages
 				
 				var markdown = new Markdown();
 				var transformed = markdown.Transform(content.ToString ());
+				
+				var prefix = file.Substring(0,file.LastIndexOf("/")+1);
+				transformed = transformed.Replace ("<img src=\"","<img src=\""+prefix);
 				
 				context.Response.Charset = "UTF-8";
 				context.Response.ContentType = "text/plain";

@@ -100,6 +100,7 @@
 				var identifier = self.currentGroup().name()+self.currentTopic().name()+self.currentElement().name();
 				identifier = self.commentIdentifier().replace(" ","_").replace("%20","_");
 						
+				prettyPrint();
 				
 				DISQUS.reset({
 				  reload: true,
@@ -109,7 +110,6 @@
 				  }
 				});				
 				
-				prettyPrint();
 			}, "text");
 		}
 		

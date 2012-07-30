@@ -23,11 +23,11 @@ namespace BifrostPages
 				var response = request.GetResponse();
 				var stream = response.GetResponseStream();
 				
-				var buffer = new byte[8192];
 				var content = new StringBuilder();
 				var count = 0;
 				do
 				{
+                    var buffer = new byte[8192];
 					count = stream.Read(buffer,0,buffer.Length);
 					if( count != 0 )
 						content.Append(UTF8Encoding.UTF8.GetString (buffer));

@@ -73,66 +73,71 @@ namespace BifrostPages
 				var group = new Group {
 					Name = groupAsJson ["path"].Value<string> ()
 				};
+				if( group.Name.StartsWith(".") )
+					continue;
+
 				groups.Add (group);
 				
 				var topics = new List<Topic> ();
 				var topicsAsJson = ShowTree (groupAsJson ["sha"].Value<string> ());
-				foreach (var topicAsJson in topicsAsJson["tree"].Children ()) {
-					var topic = new Topic {
-						Name = topicAsJson ["path"].Value<string> ()
-					};
-					topics.Add (topic);
-					
-					var elements = new List<Element> ();
-					var elementsAsJson = ShowTree (topicAsJson ["sha"].Value<string> ());
-					foreach (var elementAsJson in elementsAsJson["tree"].Children ()) {
-						var fileName = elementAsJson ["path"].Value<string> ();
-						var baseUrl = "https://raw.github.com/dolittlestudios/Bifrost-Documentation/master"; ///Source/Bifrost.Pages.Web/";
-						var file = string.Format
-							("{0}/{1}/{2}/{3}", // features/documentation/content
-							 	baseUrl,
-							 	group.Name,
-							 	topic.Name,
-							 	fileName
-						);
+				try {
+					foreach (var topicAsJson in topicsAsJson["tree"].Children ()) {
+						var topic = new Topic {
+							Name = topicAsJson ["path"].Value<string> ()
+						};
+						topics.Add (topic);
 						
+						var elements = new List<Element> ();
+						var elementsAsJson = ShowTree (topicAsJson ["sha"].Value<string> ());
+						foreach (var elementAsJson in elementsAsJson["tree"].Children ()) {
+							var fileName = elementAsJson ["path"].Value<string> ();
+							var baseUrl = "https://raw.github.com/dolittlestudios/Bifrost-Documentation/master"; ///Source/Bifrost.Pages.Web/";
+							var file = string.Format
+								("{0}/{1}/{2}/{3}", // features/documentation/content
+								 	baseUrl,
+								 	group.Name,
+								 	topic.Name,
+								 	fileName
+							);
+							
 
 #if(false)
-						var commitUrl = "https://api.github.com/repos/dolittlestudios/bifrost-documentation/commits/"+elementAsJson["sha"].Value<string>();
-						
-						// https://api.github.com/repos/dolittlestudios/bifrost-documentation/commits/508ab7c6817e974def40cc2a3b1b42a2fd99dd15
-						// https://api.github.com/repos/dolittlestudios/bifrost-documentation/commits/6e1bb6087c82b063d3c1173072b8edecac57a453
-						/*
-							"http://github.com/api/v2/json/commits/list/dolittlestudios/bifrost-documentation/master/" +
-							group.Name + "/" + topic.Name + "/" + fileName;
-						*/
-						
-						var commitsAsJson = GetJson (commitUrl);
-						
-						var lastCommit = commitsAsJson ["commits"].Children ().First ();
-						var date = DateTime.Parse (lastCommit ["committed_date"].Value<string> ());
-						var authorName = lastCommit ["author"] ["name"].Value<string> ();
-						var committedDate = string.Format ("{0} - {1}",
-								date.ToLongDateString (),
-						        date.ToString ("HH:mm"));
-		
+							var commitUrl = "https://api.github.com/repos/dolittlestudios/bifrost-documentation/commits/"+elementAsJson["sha"].Value<string>();
+							
+							// https://api.github.com/repos/dolittlestudios/bifrost-documentation/commits/508ab7c6817e974def40cc2a3b1b42a2fd99dd15
+							// https://api.github.com/repos/dolittlestudios/bifrost-documentation/commits/6e1bb6087c82b063d3c1173072b8edecac57a453
+							/*
+								"http://github.com/api/v2/json/commits/list/dolittlestudios/bifrost-documentation/master/" +
+								group.Name + "/" + topic.Name + "/" + fileName;
+							*/
+							
+							var commitsAsJson = GetJson (commitUrl);
+							
+							var lastCommit = commitsAsJson ["commits"].Children ().First ();
+							var date = DateTime.Parse (lastCommit ["committed_date"].Value<string> ());
+							var authorName = lastCommit ["author"] ["name"].Value<string> ();
+							var committedDate = string.Format ("{0} - {1}",
+									date.ToLongDateString (),
+							        date.ToString ("HH:mm"));
+			
 #else						
-						var authorName = "Unknown";
-						var committedDate = string.Format ("{0} - {1}",
-								DateTime.Now.ToLongDateString (),
-						        DateTime.Now.ToString ("HH:mm"));
+							var authorName = "Unknown";
+							var committedDate = string.Format ("{0} - {1}",
+									DateTime.Now.ToLongDateString (),
+							        DateTime.Now.ToString ("HH:mm"));
 #endif
-						var element = new Element {
-							Name = Path.GetFileNameWithoutExtension (fileName),
-							File = file,
-							Author = authorName,
-							LastChanged = committedDate
-						};
-						elements.Add (element);
+							var element = new Element {
+								Name = Path.GetFileNameWithoutExtension (fileName),
+								File = file,
+								Author = authorName,
+								LastChanged = committedDate
+							};
+							elements.Add (element);
+						}
+						
+						topic.Elements = elements.OrderBy (e => e.Name).ToArray ();
 					}
-					
-					topic.Elements = elements.OrderBy (e => e.Name).ToArray ();
-				}
+				} catch {}
 				
 				group.Topics = topics.OrderBy (e => e.Name).ToArray ();
 			}

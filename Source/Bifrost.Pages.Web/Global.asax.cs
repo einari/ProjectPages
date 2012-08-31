@@ -11,7 +11,6 @@ namespace BifrostPages
 		public override void OnConfigure (Bifrost.Configuration.IConfigure configure)
 		{
 			WebConfigurationExtensions.AsSinglePageApplication (configure);
-				
 			
 			base.OnConfigure (configure);
 		}

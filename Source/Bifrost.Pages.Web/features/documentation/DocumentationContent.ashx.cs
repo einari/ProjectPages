@@ -41,7 +41,7 @@ namespace BifrostPages
 		
 		public static void Initialize ()
 		{
-			HttpContext.Current.Server.MapPath ("~/App_Data/Structure.json");
+			FileName = HttpContext.Current.Server.MapPath ("~/App_Data/Structure.json");
 			
 			if (_structure == null) 
 				Load ();
@@ -91,7 +91,7 @@ namespace BifrostPages
 						var elementsAsJson = ShowTree (topicAsJson ["sha"].Value<string> ());
 						foreach (var elementAsJson in elementsAsJson["tree"].Children ()) {
 							var fileName = elementAsJson ["path"].Value<string> ();
-							var baseUrl = "https://raw.github.com/dolittlestudios/Bifrost-Documentation/master"; ///Source/Bifrost.Pages.Web/";
+							var baseUrl = "https://raw.github.com/dolittle/Bifrost-Documentation/master"; ///Source/Bifrost.Pages.Web/";
 							var file = string.Format
 								("{0}/{1}/{2}/{3}", // features/documentation/content
 								 	baseUrl,
@@ -102,12 +102,12 @@ namespace BifrostPages
 							
 
 #if(false)
-							var commitUrl = "https://api.github.com/repos/dolittlestudios/bifrost-documentation/commits/"+elementAsJson["sha"].Value<string>();
+							var commitUrl = "https://api.github.com/repos/dolittle/bifrost-documentation/commits/"+elementAsJson["sha"].Value<string>();
 							
-							// https://api.github.com/repos/dolittlestudios/bifrost-documentation/commits/508ab7c6817e974def40cc2a3b1b42a2fd99dd15
-							// https://api.github.com/repos/dolittlestudios/bifrost-documentation/commits/6e1bb6087c82b063d3c1173072b8edecac57a453
+							// https://api.github.com/repos/dolittle/bifrost-documentation/commits/508ab7c6817e974def40cc2a3b1b42a2fd99dd15
+							// https://api.github.com/repos/dolittle/bifrost-documentation/commits/6e1bb6087c82b063d3c1173072b8edecac57a453
 							/*
-								"http://github.com/api/v2/json/commits/list/dolittlestudios/bifrost-documentation/master/" +
+								"http://github.com/api/v2/json/commits/list/dolittle/bifrost-documentation/master/" +
 								group.Name + "/" + topic.Name + "/" + fileName;
 							*/
 							
@@ -162,7 +162,7 @@ namespace BifrostPages
 	
 		static string GetRootSha()
 		{
-			var commitsUrl = "https://api.github.com/repos/dolittlestudios/bifrost-documentation/commits";
+			var commitsUrl = "https://api.github.com/repos/dolittle/bifrost-documentation/commits";
 			var jsonString = GetJsonString(commitsUrl);
 			var sha = GetShaFromString(jsonString,"\"sha\":\"");
 			return sha;
@@ -170,7 +170,7 @@ namespace BifrostPages
 		
 		static JObject ShowTree(string parent)
 		{
-			var url = "https://api.github.com/repos/dolittlestudios/bifrost-documentation/git/trees/"+parent; //+"?recursive=1";
+			var url = "https://api.github.com/repos/dolittle/bifrost-documentation/git/trees/"+parent; //+"?recursive=1";
 			var json = GetJson(url);
 			return json;
 		}
@@ -202,6 +202,9 @@ namespace BifrostPages
 		
 		public virtual void ProcessRequest (HttpContext context)
 		{
+            if (_structure == null)
+                Initialize();
+
 			context.Response.ContentType = "application/json";
 			context.Response.Write (_structure);
 		}

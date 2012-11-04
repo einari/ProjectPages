@@ -19,6 +19,25 @@ Bifrost.namespace = function (ns, content) {
 		Bifrost.extend(parent, content);
 	}
 };
+Bifrost.namespace("Bifrost", {
+	functionParser: {
+		parse: function(func) {
+			var result = [];
+			
+			var arguments = func.toString ().match (/function\s+\w*\s*\((.*?)\)/)[1].split (/\s*,\s*/);
+			$.each(arguments, function(index, item) {
+				if( item.trim().length > 0 ) {
+					result.push({
+						name:item
+					});
+				}
+			});
+			
+			return result;
+		}
+	}
+});
+
 function TypeInfo(obj) {
 	var target = obj;
 
@@ -67,7 +86,7 @@ Bifrost.namespace("Bifrost", {
 });
 Bifrost.namespace("Bifrost", {
 	TypePrototype: {
-	},
+	}
 });
 Bifrost.namespace("Bifrost", {
 	Type : function(typeDefinition) {
@@ -451,7 +470,7 @@ if (typeof ko !== 'undefined') {
     };
 }
 
-﻿Bifrost.namespace("Bifrost.validation");
+Bifrost.namespace("Bifrost.validation");
 Bifrost.validation.validationService = (function () {
     function extendProperties(target, validators) {
         for (var property in target) {
@@ -1361,6 +1380,32 @@ Bifrost.features.ViewModelDefinition = (function () {
 })();
 Bifrost.namespace("Bifrost.features");
 Bifrost.features.Feature = (function () {
+    var partialViewModelBindingProvider = function () {
+        var self = this;
+
+        var originalBindingProvider = ko.bindingProvider.instance;
+
+        this.nodeHasBindings = function (node) {
+            var closestViewModel = $(node).closest("[data-feature]");
+            if (closestViewModel.length == 1) {
+                var viewModelName = closestViewModel.data("feature");
+                if (viewModelName == self.currentViewModel) {
+                    return originalBindingProvider.nodeHasBindings(node);
+                } else {
+                    return false;
+                }
+            }
+
+            return originalBindingProvider.nodeHasBindings(node)
+        },
+
+        this.getBindings = function (node, bindingContext) {
+            return originalBindingProvider.getBindings(node, bindingContext);
+        }
+    }
+
+
+
     function Feature(name, path, isDefault) {
         var self = this;
         this.loaded = false;
@@ -1407,13 +1452,21 @@ Bifrost.features.Feature = (function () {
         }
 
         this.actualRenderTo = function (target) {
-			$(target).empty();
+            $(target).empty();
             $(target).append(self.view);
 
-			if( self.viewModelDefinition ) {
-            	var viewModel = self.viewModelDefinition.getInstance();
-            	ko.applyBindings(viewModel, target);
-			}
+            if (self.viewModelDefinition) {
+                var viewModel = self.viewModelDefinition.getInstance();
+
+                var previousBindingProvider = ko.bindingProvider.instance;
+                ko.bindingProvider.instance = new partialViewModelBindingProvider();
+                ko.bindingProvider.instance.currentViewModel = self.path;
+
+                ko.applyBindings(viewModel, target);
+
+                ko.bindingProvider.instance.currentViewModel = "";
+                ko.bindingProvider.instance = previousBindingProvider;
+            }
 
             Bifrost.features.featureManager.hookup(function (a) { return $(a, $(target)); });
         }
@@ -1519,7 +1572,7 @@ Bifrost.messaging.messenger = (function() {
 		}
 	}
 })();
-if (typeof ko !== 'undefined') {
+if (typeof ko !== 'undefined' && typeof History !== "undefined" && typeof History.Adapter !== "undefined") {
     ko.bindingHandlers.navigateTo = {
         init: function (element, valueAccessor, allBindingAccessor, viewModel) {
             ko.applyBindingsToNode(element, { 
@@ -1534,39 +1587,43 @@ if (typeof ko !== 'undefined') {
 Bifrost.namespace("Bifrost.navigation", {
     navigationManager: {
         hookup: function () {
-            $("body").click(function (e) {
-                var href = e.target.href;
-                if (typeof href == "undefined") {
-                    var closestAnchor = $(e.target).closest("a")[0];
-                    if (!closestAnchor) {
-                        return;
+            if (typeof History !== "undefined" && typeof History.Adapter !== "undefined") {
+                $("body").click(function (e) {
+                    var href = e.target.href;
+                    if (typeof href == "undefined") {
+                        var closestAnchor = $(e.target).closest("a")[0];
+                        if (!closestAnchor) {
+                            return;
+                        }
+                        href = closestAnchor.href;
                     }
-                    href = closestAnchor.href;
-                }
-                if (href.indexOf("#") > 0) {
-                    href = href.substr(0, href.indexOf("#"));
-                }
+                    if (href.indexOf("#") > 0) {
+                        href = href.substr(0, href.indexOf("#"));
+                    }
 
-                if (href.length == 0) {
-                    href = "/";
-                }
-                var targetUri = Bifrost.Uri.create(href);
-                if (targetUri.isSameAsOrigin) {
-                    var target = targetUri.path;
-                    while (target.indexOf("/") == 0) {
-                        target = target.substr(1);
+                    if (href.length == 0) {
+                        href = "/";
                     }
-                    e.preventDefault();
-                    var queryString = targetUri.queryString.length > 0 ? "?" + targetUri.queryString : "";
-                    History.pushState({}, "", "/" + target + queryString);
-                }
-            });
+                    var targetUri = Bifrost.Uri.create(href);
+                    if (targetUri.isSameAsOrigin) {
+                        var target = targetUri.path;
+                        while (target.indexOf("/") == 0) {
+                            target = target.substr(1);
+                        }
+                        e.preventDefault();
+                        var queryString = targetUri.queryString.length > 0 ? "?" + targetUri.queryString : "";
+                        History.pushState({}, "", "/" + target + queryString);
+                    }
+                });
+            }
         }
     }
 });
+
 /*
 @depends utils/extend.js
 @depends utils/namespace.js
+@depends utils/functionParser.js
 @depends utils/TypeInfo.js
 @depends utils/TypePrototype.js
 @depends utils/Type.js

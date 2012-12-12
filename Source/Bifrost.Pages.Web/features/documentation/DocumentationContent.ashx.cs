@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 using System.Text;
+using System.Configuration;
 
 namespace BifrostPages
 {
@@ -179,6 +180,15 @@ namespace BifrostPages
 		static string GetJsonString (string url)
 		{
 			var client = new WebClient ();
+
+            var gitHubUser = ConfigurationManager.AppSettings["GitHubUser"];
+            var gitHubPassword = ConfigurationManager.AppSettings["GitHubPassword"];
+
+            if (!string.IsNullOrEmpty(gitHubUser) && !string.IsNullOrEmpty(gitHubPassword))
+            {
+                var credentials = Convert.ToBase64String(Encoding.ASCII.GetBytes(gitHubUser + ":" + gitHubPassword));
+                client.Headers[HttpRequestHeader.Authorization] = "Basic " + credentials;
+            }
 			var json = client.DownloadString (new Uri (url));
 			return json;
 		}

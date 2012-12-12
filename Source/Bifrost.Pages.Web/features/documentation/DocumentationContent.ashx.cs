@@ -159,7 +159,6 @@ namespace BifrostPages
 			var sha = input.Substring(start, end-start);
 			return sha;
 		}
-		
 	
 		static string GetRootSha()
 		{

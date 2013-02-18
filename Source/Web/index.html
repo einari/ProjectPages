@@ -10,93 +10,10 @@
 	<meta name="google-site-verification" content="_uCCzZU_6DFTbyOSj7XyLbXCasJJRW9Mq29bvHtXNkg" />
 	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="screen" title="no title" charset="utf-8">
 	<link rel="stylesheet" href="css/ribbon.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    <link href="css/dolittle.css" rel="stylesheet">
+	
 	<link rel="stylesheet" href="prettify/prettify.css" type="text/css" media="screen" title="no title" charset="utf-8">
 	<link rel="stylesheet" href="prettify/sunburst.css" type="text/css" media="screen" title="no title" charset="utf-8">
-	
-	<style type="text/css">
-		body {
-			padding-top: 60px;
-			padding-bottom: 40px;
-		}
-		
-		/* http://www.alessioatzeni.com/wp-content/tutorials/html-css/CSS3-loading-animation-loop/index.html */
-		.ball {
-			background-color: rgba(0,0,0,0);
-			border:5px solid rgba(0,183,229,0.9);
-			opacity:.9;
-			border-top:5px solid rgba(0,0,0,0);
-			border-left:5px solid rgba(0,0,0,0);
-			border-radius:50px;
-			box-shadow: 0 0 35px #2187e7;
-			width:50px;
-			height:50px;
-			margin:0 auto;
-			-moz-animation:spin .5s infinite linear;
-			-webkit-animation:spin .5s infinite linear;
-		}
-		.ball1 {
-			background-color: rgba(0,0,0,0);
-			border:5px solid rgba(0,183,229,0.9);
-			opacity:.9;
-			border-top:5px solid rgba(0,0,0,0);
-			border-left:5px solid rgba(0,0,0,0);
-			border-radius:50px;
-			box-shadow: 0 0 15px #2187e7; 
-			width:30px;
-			height:30px;
-			margin:0 auto;
-			position:relative;
-			top:-50px;
-			-moz-animation:spinoff .5s infinite linear;
-			-webkit-animation:spinoff .5s infinite linear;
-		}
-		@-moz-keyframes spin {
-			0% { -moz-transform:rotate(0deg); }
-			100% { -moz-transform:rotate(360deg); }
-		}
-		@-moz-keyframes spinoff {
-			0% { -moz-transform:rotate(0deg); }
-			100% { -moz-transform:rotate(-360deg); }
-		}
-		@-webkit-keyframes spin {
-			0% { -webkit-transform:rotate(0deg); }
-			100% { -webkit-transform:rotate(360deg); }
-		}
-		@-webkit-keyframes spinoff {
-			0% { -webkit-transform:rotate(0deg); }
-			100% { -webkit-transform:rotate(-360deg); }
-		}
-			
-		.keepcentered {
-		    position:    absolute;
-		    left:        50%;        /* Start with top left in the center */
-		    top:         50%;
-		    width:       200px;      /* The fixed width... */
-		    height:      100px;      /* ...and height */
-		    margin-left: -100px;     /* Shift over half the width */
-		    margin-top:  -50px;      /* Shift up half the height */
-		    border: 1px solid black; /* Just for demo */
-		}			
-	
-		.loading
-		{
-			background: #161616 url(img/pattern_40.gif) top left repeat;
-
-			/*background-color: rgba(0,0,0,255);*/
-			
-			opacity:.8;
-			width: 100px;
-			height: 80px;
-			padding-top: 20px;
-			-webkit-border-radius: 16px;
-			-moz-border-radius: 16px;
-			border-radius: 16px;	
-			border:2px solid white;
-		}			
-    </style>	
-
-	<!--		
-	<link rel="stylesheet" href="css/bootstrap-responsive.min.css" type="text/css" media="screen" title="no title" charset="utf-8">-->
 	
 	<script type="text/javascript">
 		window['PR_SHOULD_USE_CONTINUATION'] = true;
@@ -122,9 +39,28 @@
 
 
 <body onload="prettyPrint();" data-spy="scroll" data-target=".subnav" data-offset="50">
+    <div class="regionOuter" style="background-color:#815fa8; padding-top:20px; padding-bottom:10px;">
+      <div class="container-narrow">
+        <div class="masthead">
+          <ul class="nav nav-pills pull-right">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/documentation">Documentation</a></li>
+          </ul>
+          <img src="logos/bifrost.png" />
+        </div>
+      </div>
+    </div>
+		
+    <div class="regionOuter" style="background-color:#ddd;">
+      <div class="container-narrow">
+        <div class="jumbotron">
+          <h2>Our goal is to solve problems. Software is just the means to do this.</h2>
+        </div>
+      </div>
+    </div>
 		
 		
-		
+	<!--
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
@@ -141,9 +77,6 @@
 						<li><a href="https://groups.google.com/group/bifrostproject">Forum</a></li>
 						<li><a href="http://jabbr.net/#/rooms/Bifrost">Jabbr Chat</a></li>
 						<li><a href="http://www.dolittle.com">dolittle</a></li>
-						<!--
-						<li><a href="#/about">About</a></li>
-						<li><a href="#">Contact</a></li>-->
 					</ul>
 				</div>
 			</div>
@@ -154,16 +87,11 @@
 			</a>
 		</div>	
 	</div>
+	-->
 		
 	<div class="container">
 		<div data-bind="feature: feature"></div>
 	</div>
-
-		<!--		
-	<div class="loading keepcentered">
-		<div class="ball"></div>
-		<div class="ball1"></div>		
-	</div>-->
 </body>
 </html>
 

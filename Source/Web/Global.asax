@@ -1,1 +1,1 @@
-<%@ Application Inherits="BifrostPages.Global" %>
+<%@ Application Inherits="Web.Global" %>

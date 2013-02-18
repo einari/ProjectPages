@@ -1,1 +1,1 @@
-<%@ WebHandler Language="C#" Class="BifrostPages.ElementLoader" %>
+<%@ WebHandler Language="C#" Class="Web.Features.Documentation.ElementLoader" %>

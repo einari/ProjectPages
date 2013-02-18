@@ -179,6 +179,7 @@
     <Content Include="features\documentation\DocumentationContent.ashx" />
     <Content Include="features\documentation\ElementLoader.ashx" />
     <Content Include="features\documentation\ResetContent.ashx" />
+    <Content Include="css\dolittle.css" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
@@ -193,6 +194,11 @@
     <Compile Include="features\documentation\ResetContent.ashx.cs">
       <DependentUpon>ResetContent.ashx</DependentUpon>
     </Compile>
+    <Compile Include="features\documentation\ContentManager.cs" />
+    <Compile Include="features\documentation\Element.cs" />
+    <Compile Include="features\documentation\Topic.cs" />
+    <Compile Include="features\documentation\Group.cs" />
+    <Compile Include="features\documentation\IContentManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -204,4 +210,10 @@
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="font\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="font\SegoeUI.ttf" />
+  </ItemGroup>
 </Project>

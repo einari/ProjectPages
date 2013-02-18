@@ -1,1 +1,1 @@
-<%@ WebHandler Language="C#" Class="BifrostPages.ResetContent" %>
+<%@ WebHandler Language="C#" Class="Web.Features.Documentation.ResetContent" %>

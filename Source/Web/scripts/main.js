@@ -21,6 +21,20 @@ require.config({
 });
 
 // "http://cdn.dolittle.com/Bifrost/Bifrost.debug",
+var dolittle = {
+	parseEmailFrom : function (email) {
+	  var atAlias = "[at]";
+	  return email.replace(atAlias, "@");
+	},
+	fixEmails : function () {
+	  $("a:contains('[at]')").each(function(){
+	    var originalEmail = $(this).text();
+	    var friendlyEmail = dolittle.parseEmailFrom(originalEmail);
+	    $(this).attr("href", "mailto:" + friendlyEmail).text(friendlyEmail);
+	  });
+	}
+};
+
 
 require(
     ["jquery", "knockout"],
@@ -39,7 +53,10 @@ require(
 		                Bifrost.features.featureMapper.add("{feature}", "/Features/{feature}", true);
 
 		                require(["/index.js"]);
+		                
+		                dolittle.fixEmails();
 		            }
+		            
 		        );
 		    }
 		);

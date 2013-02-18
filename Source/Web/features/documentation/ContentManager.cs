@@ -4,6 +4,7 @@ using System.Web;
 using Bifrost.Execution;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace Web.Features.Documentation
 {
@@ -42,6 +43,7 @@ namespace Web.Features.Documentation
 		{
 			var groups = new List<Group>();
 			var path = GetRepositoryPathFor(project);
+			var git = Git.Open (path);
 
 			var directory = new DirectoryInfo(path);
 			foreach( var groupDirectory in directory.GetDirectories() ) 
@@ -51,7 +53,7 @@ namespace Web.Features.Documentation
 				var group = new Group
 				{
 					Name = groupDirectory.Name,
-					Elements = groupDirectory.GetFiles().Where(FileIsMarkDown).Select(f => ConvertFileInfoToElement(project, f)).ToArray()
+					Elements = groupDirectory.GetFiles().Where(FileIsMarkDown).Select(f => ConvertFileInfoToElement(git, project, f)).ToArray()
 				};
 
 				var topics = new List<Topic>();
@@ -61,7 +63,7 @@ namespace Web.Features.Documentation
 					var topic = new Topic 
 					{
 						Name = topicDirectory.Name,
-						Elements = topicDirectory.GetFiles ().Where(FileIsMarkDown).Select(f => ConvertFileInfoToElement(project, f)).ToArray()
+						Elements = topicDirectory.GetFiles ().Where(FileIsMarkDown).Select(f => ConvertFileInfoToElement(git, project, f)).ToArray()
 					};
 					topics.Add (topic);
 				}
@@ -84,15 +86,25 @@ namespace Web.Features.Documentation
 			return fileInfo.Extension == ".md";
 		}
 
-		Element ConvertFileInfoToElement(string project, FileInfo fileInfo)
+		Element ConvertFileInfoToElement(Git git, string project, FileInfo fileInfo)
 		{
-			return new Element 
+			var element =  new Element 
 			{
 				Name = Path.GetFileNameWithoutExtension(fileInfo.Name),
 				File = GetRelativePathForFile(project, fileInfo),
 				Author = "Unknown",
 				LastChanged = "Unknown"
 			};
+
+			var logCommand = git.Log ();
+			logCommand.AddPath (element.File);
+			var result = logCommand.Call ();
+			var commit = result.FirstOrDefault();
+			if( commit != null ) 
+			{
+				element.Author = commit.GetCommitterIdent().GetName();
+			}
+			return element;
 		}
 
 		string GetRelativePathForFile(string project, FileInfo file)

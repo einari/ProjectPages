@@ -29,8 +29,8 @@ namespace Web
 		public override void OnStarted ()
 		{
 			try {
-				DocumentationContent.Initialize (Server);
 				ContentManager.Initialize(Server);
+				DocumentationContent.Initialize (Server);
 			} catch( Exception ex) {
 				ServerVariables.Log ("Exception : {0}, {1}", ex.Message, ex.StackTrace);
 			}

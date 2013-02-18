@@ -18,6 +18,7 @@ namespace Web
 			context.Response.Charset = "UTF-8";
 			context.Response.ContentType = "text/plain";
 			context.Response.Write ("ContentPath : "+ContentManager.ContentPath);
+			context.Response.Write ("DocumentationStructureFile : "+DocumentationContent.FileName);
 		}
 	}
 }

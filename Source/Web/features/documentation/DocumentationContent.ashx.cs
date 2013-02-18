@@ -9,7 +9,7 @@ namespace Web.Features.Documentation
 {
 	public class DocumentationContent : IHttpHandler
 	{
-		static string FileName = "";
+		public static string FileName = "";
 		static string _structure = null;
 		
 		public static void Initialize ()

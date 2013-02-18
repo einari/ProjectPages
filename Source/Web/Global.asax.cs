@@ -27,8 +27,8 @@ namespace Web
 		public override void OnStarted ()
 		{
 			try {
-				DocumentationContent.Initialize ();
-				ContentManager.Initialize();
+				DocumentationContent.Initialize (Server);
+				ContentManager.Initialize(Server);
 			} catch {
 			}
 			base.OnStarted ();

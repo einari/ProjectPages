@@ -13,9 +13,9 @@ namespace Web.Features.Documentation
 	{
 		public static string ContentPath; 
 
-		public static void Initialize()
+		public static void Initialize(HttpServerUtility server)
 		{
-			ContentPath = HttpContext.Current.Server.MapPath("~/App_Data/Repositories");
+			ContentPath = server.MapPath("~/App_Data/Repositories");
 		}
 
 		public void Synchronize(string project)

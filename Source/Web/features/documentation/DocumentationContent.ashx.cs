@@ -12,9 +12,9 @@ namespace Web.Features.Documentation
 		public static string FileName = "";
 		static string _structure = null;
 		
-		public static void Initialize ()
+		public static void Initialize (HttpServerUtility server)
 		{
-			FileName = HttpContext.Current.Server.MapPath ("~/App_Data/Structure.json");
+			FileName = server.MapPath ("~/App_Data/Structure.json");
 			
 			if (_structure == null) 
 				Load ();
@@ -63,7 +63,7 @@ namespace Web.Features.Documentation
 		public virtual void ProcessRequest (HttpContext context)
 		{
             if (_structure == null)
-                Initialize();
+                Initialize(context.Server);
 
 			context.Response.ContentType = "application/json";
 			context.Response.Write (_structure);

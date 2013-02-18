@@ -12,10 +12,12 @@ namespace Web.Features.Documentation
 	public class ContentManager : IContentManager
 	{
 		public static string ContentPath; 
+		public static string BifrostPath;
 
 		public static void Initialize(HttpServerUtility server)
 		{
 			ContentPath = server.MapPath("~/App_Data/Repositories");
+			BifrostPath = GetRepositoryPathFor("Bifrost");
 		}
 
 		public void Synchronize(string project)
@@ -127,7 +129,7 @@ namespace Web.Features.Documentation
 			return string.Format ("https://github.com/dolittle/{0}-Documentation.git", project);
 		}
 
-		string GetRepositoryPathFor(string project)
+		static string GetRepositoryPathFor(string project)
 		{
 
 			var fullPath = string.Format ("{0}{1}{2}", ContentPath, Path.DirectorySeparatorChar, project);

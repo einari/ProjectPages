@@ -28,6 +28,7 @@ namespace Web
 		{
 			try {
 				DocumentationContent.Initialize ();
+				ContentManager.Initialize();
 			} catch {
 			}
 			base.OnStarted ();

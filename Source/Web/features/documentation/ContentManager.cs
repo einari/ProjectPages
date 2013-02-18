@@ -11,10 +11,10 @@ namespace Web.Features.Documentation
 	[Singleton]
 	public class ContentManager : IContentManager
 	{
-		string _contentPath; 
+		static string _contentPath; 
 
 
-		public ContentManager()
+		public static void Initialize()
 		{
 			_contentPath = HttpContext.Current.Server.MapPath("~/App_Data/Repositories");
 		}

@@ -5,6 +5,7 @@ using Bifrost.Execution;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using NGit.Util;
 
 namespace Web.Features.Documentation
 {
@@ -13,11 +14,14 @@ namespace Web.Features.Documentation
 	{
 		public static string ContentPath; 
 		public static string BifrostPath;
+		static FS _fileSystem;
 
 		public static void Initialize(HttpServerUtility server)
 		{
 			ContentPath = server.MapPath("~/App_Data/Repositories");
 			BifrostPath = GetRepositoryPathFor("Bifrost");
+
+			_fileSystem = FS.Detect().SetUserHome(server.MapPath ("~"));
 		}
 
 		public void Synchronize(string project)
@@ -28,13 +32,14 @@ namespace Web.Features.Documentation
 			{
 				Directory.CreateDirectory(repositoryPath);
 				var cloneCommand = Git.CloneRepository();
+
 				cloneCommand.SetURI(repositoryUrl);
 				cloneCommand.SetDirectory(repositoryPath);
 				cloneCommand.Call();
 			} 
 			else 
 			{
-				var git = Git.Open (repositoryPath);
+				var git = Git.Open (repositoryPath, _fileSystem);
 				git.Pull().Call ();
 			}
 		}

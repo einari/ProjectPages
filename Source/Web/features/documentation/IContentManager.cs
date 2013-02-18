@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Web
+namespace Web.Features.Documentation
 {
 	public interface IContentManager
 	{

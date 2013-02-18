@@ -11,12 +11,11 @@ namespace Web.Features.Documentation
 	[Singleton]
 	public class ContentManager : IContentManager
 	{
-		static string _contentPath; 
-
+		public static string ContentPath; 
 
 		public static void Initialize()
 		{
-			_contentPath = HttpContext.Current.Server.MapPath("~/App_Data/Repositories");
+			ContentPath = HttpContext.Current.Server.MapPath("~/App_Data/Repositories");
 		}
 
 		public void Synchronize(string project)
@@ -76,7 +75,7 @@ namespace Web.Features.Documentation
 
 		public string GetFileContentFor(string project, string file)
 		{
-			var path = string.Format ("{0}{1}{2}",GetRepositoryPathFor(project),Path.DirectorySeparatorChar, file);
+			var path = string.Format ("{0}{1}{2}",GetRepositoryPathFor(project),Path.DirectorySeparatorChar,file);
 			var content = File.ReadAllText (path);
 			return content;
 		}
@@ -122,7 +121,7 @@ namespace Web.Features.Documentation
 		string GetRepositoryPathFor(string project)
 		{
 
-			var fullPath = string.Format ("{0}{1}{2}", _contentPath, Path.DirectorySeparatorChar, project);
+			var fullPath = string.Format ("{0}{1}{2}", ContentPath, Path.DirectorySeparatorChar, project);
 			return fullPath;
 		}
 	}

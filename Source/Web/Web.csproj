@@ -187,6 +187,7 @@
     <Content Include="img\entypo.png" />
     <Content Include="img\forseti-icon.png" />
     <Content Include="img\yggdrasil-icon.png" />
+    <Content Include="ServerVariables.ashx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
@@ -206,6 +207,9 @@
     <Compile Include="features\documentation\Topic.cs" />
     <Compile Include="features\documentation\Group.cs" />
     <Compile Include="features\documentation\IContentManager.cs" />
+    <Compile Include="ServerVariables.ashx.cs">
+      <DependentUpon>ServerVariables.ashx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

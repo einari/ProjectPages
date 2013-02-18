@@ -22,7 +22,7 @@ namespace Web.Features.Documentation
 		{
 			var repositoryUrl = GetRepositoryUrlFor(project);
 			var repositoryPath = GetRepositoryPathFor(project);
-			if( !Directory.Exists(repositoryPath)) 
+			if( !HasRepository(repositoryPath)) 
 			{
 				Directory.CreateDirectory(repositoryPath);
 				var cloneCommand = Git.CloneRepository();
@@ -104,6 +104,15 @@ namespace Web.Features.Documentation
 				element.Author = commit.GetCommitterIdent().GetName();
 			}
 			return element;
+		}
+
+		bool HasRepository(string path)
+		{
+			if( Directory.Exists(path) &&
+			    Directory.Exists (string.Format ("{0}{1}{2}", path, Path.DirectorySeparatorChar, ".git")))
+				return true;
+
+			return false;
 		}
 
 		string GetRelativePathForFile(string project, FileInfo file)

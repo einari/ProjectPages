@@ -24,11 +24,11 @@ namespace Web
 		{
 			context.Response.Charset = "UTF-8";
 			context.Response.ContentType = "text/plain";
-			context.Response.Write ("ContentPath : "+ContentManager.ContentPath+"<br>\n");
-			context.Response.Write ("DocumentationStructureFile : "+DocumentationContent.FileName+"<br>\n");
+			context.Response.Write ("ContentPath : "+ContentManager.ContentPath+"\n");
+			context.Response.Write ("DocumentationStructureFile : "+DocumentationContent.FileName+"\n");
 
 			foreach( var message in _messages )
-				context.Response.Write ("Message : "+message+"<br>\n");
+				context.Response.Write ("Message : "+message+"\n");
 		}
 	}
 }

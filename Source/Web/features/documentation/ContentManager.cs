@@ -76,7 +76,7 @@ namespace Web.Features.Documentation
 
 		public string GetFileContentFor(string project, string file)
 		{
-			var path = string.Format ("{0}/{1}",GetRepositoryPathFor(project),file);
+			var path = string.Format ("{0}{1}{2}",GetRepositoryPathFor(project),Path.DirectorySeparatorChar, file);
 			var content = File.ReadAllText (path);
 			return content;
 		}
@@ -121,7 +121,8 @@ namespace Web.Features.Documentation
 
 		string GetRepositoryPathFor(string project)
 		{
-			var fullPath = string.Format ("{0}/{1}", _contentPath, project);
+
+			var fullPath = string.Format ("{0}{1}{2}", _contentPath, Path.DirectorySeparatorChar, project);
 			return fullPath;
 		}
 	}

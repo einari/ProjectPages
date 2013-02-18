@@ -2,7 +2,6 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Web;
-using System.Web.UI;
 using System.Net;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -11,7 +10,7 @@ using Newtonsoft.Json.Serialization;
 using System.Text;
 using System.Configuration;
 
-namespace BifrostPages
+namespace Web.Features.Documentation
 {
 	public class Element
 	{
@@ -34,7 +33,7 @@ namespace BifrostPages
 	}
 	
 	
-	public class DocumentationContent : System.Web.IHttpHandler
+	public class DocumentationContent : IHttpHandler
 	{
 		static string FileName = "";
 		

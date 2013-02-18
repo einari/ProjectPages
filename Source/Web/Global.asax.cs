@@ -3,8 +3,9 @@ using Bifrost.Web;
 using Bifrost.Execution;
 using Bifrost.Unity;
 using Microsoft.Practices.Unity;
+using Web.Features.Documentation;
 
-namespace BifrostPages
+namespace Web
 {
 	public class Global : BifrostHttpApplication
 	{

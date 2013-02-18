@@ -4,7 +4,7 @@ using System.Web;
 using MarkdownSharp;
 using System;
 
-namespace BifrostPages
+namespace Web.Features.Documentation
 {
 	public class ElementLoader : System.Web.IHttpHandler
 	{

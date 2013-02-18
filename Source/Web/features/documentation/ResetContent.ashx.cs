@@ -1,9 +1,9 @@
 using System.Web;
 using System.Threading.Tasks;
 
-namespace BifrostPages
+namespace Web.Features.Documentation
 {
-	public class ResetContent : System.Web.IHttpHandler
+	public class ResetContent : IHttpHandler
 	{
 		
 		public virtual bool IsReusable {

@@ -180,6 +180,13 @@
     <Content Include="features\documentation\ElementLoader.ashx" />
     <Content Include="features\documentation\ResetContent.ashx" />
     <Content Include="css\dolittle.css" />
+    <Content Include="logos\bifrost.png" />
+    <Content Include="img\balder-icon.png" />
+    <Content Include="img\bifrost-icon.png" />
+    <Content Include="img\chirp-icon.png" />
+    <Content Include="img\entypo.png" />
+    <Content Include="img\forseti-icon.png" />
+    <Content Include="img\yggdrasil-icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
@@ -212,6 +219,7 @@
   <ItemGroup />
   <ItemGroup>
     <Folder Include="font\" />
+    <Folder Include="logos\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="font\SegoeUI.ttf" />

@@ -4,11 +4,13 @@ using Bifrost.Execution;
 using Bifrost.Unity;
 using Microsoft.Practices.Unity;
 using Web.Features.Documentation;
+using System;
 
 namespace Web
 {
 	public class Global : BifrostHttpApplication
 	{
+
 		public override void OnConfigure (Bifrost.Configuration.IConfigure configure)
 		{
 			WebConfigurationExtensions.AsSinglePageApplication (configure);
@@ -29,7 +31,8 @@ namespace Web
 			try {
 				DocumentationContent.Initialize (Server);
 				ContentManager.Initialize(Server);
-			} catch {
+			} catch( Exception ex) {
+				ServerVariables.Log ("Exception : {0}, {1}", ex.Message, ex.StackTrace);
 			}
 			base.OnStarted ();
 		}

@@ -23,10 +23,6 @@ namespace Web.Features.Documentation
 			BifrostPath = GetRepositoryPathFor("Bifrost");
 			var sitePath = server.MapPath ("~");
 			Runtime.SetProperty("user.home", sitePath);
-
-			ServerVariables.Log ("Home : ",sitePath);
-
-			//_fileSystem = FS.Detect().SetUserHome(server.MapPath ("~"));
 		}
 
 		public void Synchronize(string project)
@@ -136,7 +132,7 @@ namespace Web.Features.Documentation
 
 		string GetRepositoryUrlFor(string project)
 		{
-			return string.Format ("https://github.com/dolittle/{0}-Documentation.git", project);
+			return string.Format ("https://github.com/dolittle/{0}-Site.git", project);
 		}
 
 		static string GetRepositoryPathFor(string project)

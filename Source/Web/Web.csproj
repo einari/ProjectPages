@@ -195,6 +195,8 @@
     <Content Include="Content\ResetContent.ashx" />
     <Content Include="Content\ImageHandler.ashx" />
     <Content Include="Content\Documentation\DocumentationContent.ashx" />
+    <Content Include="features\quickStart\view.html" />
+    <Content Include="features\quickStart\viewModel.js" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
@@ -236,6 +238,7 @@
     <Folder Include="logos\" />
     <Folder Include="Content\" />
     <Folder Include="Content\Documentation\" />
+    <Folder Include="features\quickStart\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="font\SegoeUI.ttf" />

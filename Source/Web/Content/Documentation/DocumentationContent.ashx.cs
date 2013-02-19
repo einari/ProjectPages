@@ -16,7 +16,9 @@ namespace Web.Content.Documentation
 		public static void Initialize (HttpServerUtility server)
 		{
 			FileName = server.MapPath ("~/App_Data/Structure.json");
-			
+
+			_contentManager.Synchronize("Bifrost");
+
 			if (_structure == null) 
 				Load ();
 			
@@ -45,7 +47,6 @@ namespace Web.Content.Documentation
 		
 		public static void Generate ()
 		{
-			_contentManager.Synchronize("Bifrost");
 			var groups = _contentManager.GetDocumentationStructure("Bifrost");
 
 			var settings = new JsonSerializerSettings ()

@@ -87,8 +87,11 @@ namespace Web.Content
 
 		public string GetFileContentFor(string project, string file)
 		{
+			var content = string.Empty;
 			var path = string.Format ("{0}{1}{2}",GetRepositoryPathFor(project),Path.DirectorySeparatorChar,file);
-			var content = File.ReadAllText (path);
+			if( File.Exists(path))
+				content = File.ReadAllText (path);
+
 			return content;
 		}
 

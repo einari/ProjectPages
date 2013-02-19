@@ -25,7 +25,6 @@ namespace Web
 			context.Response.Charset = "UTF-8";
 			context.Response.ContentType = "text/plain";
 			context.Response.Write ("ContentPath : "+ContentManager.ContentPath+"\n");
-			context.Response.Write ("BifrostPath : "+ContentManager.BifrostPath+"\n");
 			context.Response.Write ("DocumentationStructureFile : "+DocumentationContent.FileName+"\n");
 
 			foreach( var message in _messages )

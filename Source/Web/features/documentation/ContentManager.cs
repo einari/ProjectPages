@@ -14,12 +14,10 @@ namespace Web.Features.Documentation
 	public class ContentManager : IContentManager
 	{
 		public static string ContentPath; 
-		public static string BifrostPath;
 
 		public static void Initialize(HttpServerUtility server)
 		{
 			ContentPath = server.MapPath("~/App_Data/Repositories");
-			BifrostPath = GetRepositoryPathFor("Bifrost");
 			var sitePath = server.MapPath ("~");
 			Runtime.SetProperty("user.home", sitePath);
 		}
@@ -44,6 +42,12 @@ namespace Web.Features.Documentation
 			}
 		}
 
+		public void DeleteRepository(string project)
+		{
+			var repositoryPath = GetRepositoryPathFor(project);
+			if( Directory.Exists(repositoryPath) )
+				Directory.Delete(repositoryPath,true);
+		}
 
 		public IEnumerable<Group> GetDocumentationStructure (string project)
 		{

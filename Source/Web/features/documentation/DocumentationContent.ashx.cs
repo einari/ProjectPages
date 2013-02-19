@@ -2,7 +2,6 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 using Newtonsoft.Json.Serialization;
 
 namespace Web.Features.Documentation
@@ -11,6 +10,8 @@ namespace Web.Features.Documentation
 	{
 		public static string FileName = "";
 		static string _structure = null;
+		public static IContentManager _contentManager = new ContentManager();
+
 		
 		public static void Initialize (HttpServerUtility server)
 		{
@@ -38,15 +39,16 @@ namespace Web.Features.Documentation
 
 		public static void Reset()
 		{
+			_contentManager.DeleteRepository ("Bifrost");
+
 			if( File.Exists(FileName))
 				File.Delete (FileName);
 		}
 		
 		public static void Generate ()
 		{
-			var contentManager = new ContentManager();
-			contentManager.Synchronize("Bifrost");
-			var groups = contentManager.GetDocumentationStructure("Bifrost");
+			_contentManager.Synchronize("Bifrost");
+			var groups = _contentManager.GetDocumentationStructure("Bifrost");
 
 			var settings = new JsonSerializerSettings ()
             {
@@ -56,8 +58,6 @@ namespace Web.Features.Documentation
 			
 			Save ();
 		}
-		
-
 
 		public virtual bool IsReusable {
 			get {

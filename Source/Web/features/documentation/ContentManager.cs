@@ -120,7 +120,7 @@ namespace Web.Features.Documentation
 		bool HasRepository(string path)
 		{
 			if( Directory.Exists(path) &&
-			    Directory.Exists (string.Format ("{0}{1}{2}-Site", path, Path.DirectorySeparatorChar, ".git")))
+			    Directory.Exists (string.Format ("{0}{1}{2}", path, Path.DirectorySeparatorChar, ".git")))
 				return true;
 
 			return false;

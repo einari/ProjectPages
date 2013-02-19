@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 using NGit.Util;
+using Sharpen;
 
 namespace Web.Features.Documentation
 {
@@ -21,10 +22,9 @@ namespace Web.Features.Documentation
 			ContentPath = server.MapPath("~/App_Data/Repositories");
 			BifrostPath = GetRepositoryPathFor("Bifrost");
 			var sitePath = server.MapPath ("~");
-			Environment.SetEnvironmentVariable("HOMEPATH", sitePath);
-			Environment.SetEnvironmentVariable("USERPROFILE", sitePath);
+			Runtime.SetProperty("user.home", sitePath);
 
-			ServerVariables.Log ("Home : ",Environment.GetFolderPath (Environment.SpecialFolder.UserProfile).Trim ());
+			ServerVariables.Log ("Home : ",sitePath);
 
 			//_fileSystem = FS.Detect().SetUserHome(server.MapPath ("~"));
 		}

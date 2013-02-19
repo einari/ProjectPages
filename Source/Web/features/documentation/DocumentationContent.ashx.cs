@@ -39,8 +39,6 @@ namespace Web.Features.Documentation
 
 		public static void Reset()
 		{
-			_contentManager.DeleteRepository ("Bifrost");
-
 			if( File.Exists(FileName))
 				File.Delete (FileName);
 		}

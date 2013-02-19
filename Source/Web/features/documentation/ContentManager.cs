@@ -120,7 +120,7 @@ namespace Web.Features.Documentation
 		bool HasRepository(string path)
 		{
 			if( Directory.Exists(path) &&
-			    Directory.Exists (string.Format ("{0}{1}{2}", path, Path.DirectorySeparatorChar, ".git")))
+			    Directory.Exists (string.Format ("{0}{1}{2}-Site", path, Path.DirectorySeparatorChar, ".git")))
 				return true;
 
 			return false;
@@ -140,8 +140,7 @@ namespace Web.Features.Documentation
 
 		static string GetRepositoryPathFor(string project)
 		{
-
-			var fullPath = string.Format ("{0}{1}{2}", ContentPath, Path.DirectorySeparatorChar, project);
+			var fullPath = string.Format ("{0}{1}{2}-Site", ContentPath, Path.DirectorySeparatorChar, project);
 			return fullPath;
 		}
 	}

@@ -98,6 +98,7 @@
     <Reference Include="Mono.Posix">
       <HintPath>..\solutions\packages\ngit\Mono.Posix.dll</HintPath>
     </Reference>
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
@@ -194,6 +195,7 @@
     <Content Include="img\forseti-icon.png" />
     <Content Include="img\yggdrasil-icon.png" />
     <Content Include="ServerVariables.ashx" />
+    <Content Include="ImageHandler.ashx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
@@ -215,6 +217,9 @@
     <Compile Include="features\documentation\IContentManager.cs" />
     <Compile Include="ServerVariables.ashx.cs">
       <DependentUpon>ServerVariables.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ImageHandler.ashx.cs">
+      <DependentUpon>ImageHandler.ashx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -26,7 +26,8 @@ namespace Web.Features.Documentation
 
 				file = file.Replace ('\\','/');
 				
-				var prefix = string.Format("/App_Data/Repositories/Bifrost-Site/{0}",file.Substring(0,file.LastIndexOf("/")+1));
+				//var prefix = string.Format("/App_Data/Repositories/Bifrost-Site/{0}",file.Substring(0,file.LastIndexOf("/")+1));
+				var prefix = string.Format("/ImageHandler.ashx?file=Bifrost-Site/{0}",file.Substring(0,file.LastIndexOf("/")+1));
 				transformed = transformed.Replace ("<img src=\"","<img src=\""+prefix);
 				
 				context.Response.Charset = "UTF-8";

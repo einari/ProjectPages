@@ -15,12 +15,15 @@ namespace Web.Features.Documentation
 		
 		public virtual void ProcessRequest (HttpContext context)
 		{
-			Parallel.Invoke (() => DocumentationContent.Generate ());
+			Parallel.Invoke (() => 
+			{
+				DocumentationContent.Reset ();
+				DocumentationContent.Generate ();
+			});
 
 			context.Response.Charset = "UTF-8";
 			context.Response.ContentType = "text/plain";
 			context.Response.Write ("OK");
-
 		}
 	}
 }

@@ -46,10 +46,10 @@ namespace Web.Features.Documentation
 		}
 
 
-		public IEnumerable<Group> GetStructure (string project)
+		public IEnumerable<Group> GetDocumentationStructure (string project)
 		{
 			var groups = new List<Group>();
-			var path = GetRepositoryPathFor(project);
+			var path = string.Format("{0}{1}Documentation",GetRepositoryPathFor(project),Path.DirectorySeparatorChar);
 			var git = Git.Open (path);
 
 			var directory = new DirectoryInfo(path);

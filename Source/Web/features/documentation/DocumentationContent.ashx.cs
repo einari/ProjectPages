@@ -35,12 +35,18 @@ namespace Web.Features.Documentation
 		{
 			File.WriteAllText (FileName, _structure);
 		}
+
+		public static void Reset()
+		{
+			if( File.Exists(FileName))
+				File.Delete (FileName);
+		}
 		
 		public static void Generate ()
 		{
 			var contentManager = new ContentManager();
 			contentManager.Synchronize("Bifrost");
-			var groups = contentManager.GetStructure("Bifrost");
+			var groups = contentManager.GetDocumentationStructure("Bifrost");
 
 			var settings = new JsonSerializerSettings ()
             {

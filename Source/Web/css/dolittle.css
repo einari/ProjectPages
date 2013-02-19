@@ -75,6 +75,13 @@ body {
 	text-decoration: none;
 	background-color: #992e00;
 }
+.nav-pills > .active > a, .nav-pills > .active > a:hover {
+	text-decoration: none;
+	background-color: #992e00;
+}
+a {
+	color: #992e00;
+}
 
 [class^="entypo-"],
 [class*=" entypo-"] {

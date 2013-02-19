@@ -176,16 +176,12 @@
     <Content Include="features\home\view.html" />
     <Content Include="features\home\viewModel.js" />
     <Content Include="scripts\marked.js" />
-    <Content Include="content\Specifications.txt" />
     <Content Include="img\pattern_40.gif" />
     <Content Include="scripts\bootstrap-collapse.js" />
     <Content Include="features\documentation\viewModel.js" />
     <Content Include="features\documentation\view.html" />
     <Content Include="features\documentation\index.html" />
     <Content Include="features\documentation\index.js" />
-    <Content Include="features\documentation\DocumentationContent.ashx" />
-    <Content Include="features\documentation\ElementLoader.ashx" />
-    <Content Include="features\documentation\ResetContent.ashx" />
     <Content Include="css\dolittle.css" />
     <Content Include="logos\bifrost.png" />
     <Content Include="img\balder-icon.png" />
@@ -195,32 +191,35 @@
     <Content Include="img\forseti-icon.png" />
     <Content Include="img\yggdrasil-icon.png" />
     <Content Include="ServerVariables.ashx" />
-    <Content Include="ImageHandler.ashx" />
+    <Content Include="Content\ElementLoader.ashx" />
+    <Content Include="Content\ResetContent.ashx" />
+    <Content Include="Content\ImageHandler.ashx" />
+    <Content Include="Content\Documentation\DocumentationContent.ashx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="features\documentation\DocumentationContent.ashx.cs">
-      <DependentUpon>DocumentationContent.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="features\documentation\ElementLoader.ashx.cs">
-      <DependentUpon>ElementLoader.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="features\documentation\ResetContent.ashx.cs">
-      <DependentUpon>ResetContent.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="features\documentation\ContentManager.cs" />
-    <Compile Include="features\documentation\Element.cs" />
-    <Compile Include="features\documentation\Topic.cs" />
-    <Compile Include="features\documentation\Group.cs" />
-    <Compile Include="features\documentation\IContentManager.cs" />
     <Compile Include="ServerVariables.ashx.cs">
       <DependentUpon>ServerVariables.ashx</DependentUpon>
     </Compile>
-    <Compile Include="ImageHandler.ashx.cs">
+    <Compile Include="Content\ElementLoader.ashx.cs">
+      <DependentUpon>ElementLoader.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\ResetContent.ashx.cs">
+      <DependentUpon>ResetContent.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\ImageHandler.ashx.cs">
       <DependentUpon>ImageHandler.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Content\ContentManager.cs" />
+    <Compile Include="Content\IContentManager.cs" />
+    <Compile Include="Content\Documentation\DocumentationContent.ashx.cs">
+      <DependentUpon>DocumentationContent.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\Documentation\Element.cs" />
+    <Compile Include="Content\Documentation\Group.cs" />
+    <Compile Include="Content\Documentation\Topic.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -235,6 +234,8 @@
   <ItemGroup>
     <Folder Include="font\" />
     <Folder Include="logos\" />
+    <Folder Include="Content\" />
+    <Folder Include="Content\Documentation\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="font\SegoeUI.ttf" />

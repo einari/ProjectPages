@@ -3,7 +3,8 @@ using Bifrost.Web;
 using Bifrost.Execution;
 using Bifrost.Unity;
 using Microsoft.Practices.Unity;
-using Web.Features.Documentation;
+using Web.Content;
+using Web.Content.Documentation;
 using System;
 
 namespace Web

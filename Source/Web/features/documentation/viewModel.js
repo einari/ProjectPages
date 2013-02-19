@@ -5,7 +5,7 @@
 		$(".accordion").collapse();
 		
 		this.groups = ko.observableArray();
-		$.getJSON("features/documentation/DocumentationContent.ashx", function(e) {
+		$.getJSON("/Content/Documentation/DocumentationContent.ashx", function(e) {
 			var groups = ko.mapping.fromJS(e);
 			self.groups(groups);
 			self.initializeFromUrl(groups);
@@ -77,7 +77,7 @@
 		this.content = ko.observable("");
 		
 		this.loadSample = function(file) {
-			$.get("/features/documentation/ElementLoader.ashx?file="+file, function(e) {
+			$.get("/Content/ElementLoader.ashx?file="+file, function(e) {
 				var markUp = $("<div/>").append(e);
 				var codeBlocks = $("code",markUp);
 				

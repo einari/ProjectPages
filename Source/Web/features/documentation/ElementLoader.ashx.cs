@@ -23,6 +23,8 @@ namespace Web.Features.Documentation
 
 				var markdown = new Markdown();
 				var transformed = markdown.Transform(content);
+
+				file = file.Replace ('\\','/');
 				
 				var prefix = string.Format("/App_Data/Repositories/Bifrost-Site/{0}",file.Substring(0,file.LastIndexOf("/")+1));
 				transformed = transformed.Replace ("<img src=\"","<img src=\""+prefix);

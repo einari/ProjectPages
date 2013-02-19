@@ -20,8 +20,12 @@ namespace Web.Features.Documentation
 		{
 			ContentPath = server.MapPath("~/App_Data/Repositories");
 			BifrostPath = GetRepositoryPathFor("Bifrost");
+			var sitePath = server.MapPath ("~");
+			Environment.SetEnvironmentVariable("HOMEPATH", sitePath);
+			Environment.SetEnvironmentVariable("USERPROFILE", sitePath);
 
-			_fileSystem = FS.Detect().SetUserHome(server.MapPath ("~"));
+
+			//_fileSystem = FS.Detect().SetUserHome(server.MapPath ("~"));
 		}
 
 		public void Synchronize(string project)

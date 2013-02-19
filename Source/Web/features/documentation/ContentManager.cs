@@ -24,6 +24,7 @@ namespace Web.Features.Documentation
 			Environment.SetEnvironmentVariable("HOMEPATH", sitePath);
 			Environment.SetEnvironmentVariable("USERPROFILE", sitePath);
 
+			ServerVariables.Log ("Home : ",Environment.GetFolderPath (Environment.SpecialFolder.UserProfile).Trim ());
 
 			//_fileSystem = FS.Detect().SetUserHome(server.MapPath ("~"));
 		}

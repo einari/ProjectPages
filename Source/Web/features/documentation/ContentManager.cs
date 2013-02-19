@@ -15,7 +15,6 @@ namespace Web.Features.Documentation
 	{
 		public static string ContentPath; 
 		public static string BifrostPath;
-		static FS _fileSystem;
 
 		public static void Initialize(HttpServerUtility server)
 		{
@@ -40,7 +39,7 @@ namespace Web.Features.Documentation
 			} 
 			else 
 			{
-				var git = Git.Open (repositoryPath, _fileSystem);
+				var git = Git.Open (repositoryPath);
 				git.Pull().Call ();
 			}
 		}

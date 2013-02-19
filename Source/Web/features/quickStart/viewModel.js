@@ -7,6 +7,8 @@
 		$.get("/Content/ElementLoader.ashx?file=quickStart.md", function(e) {
 			var markUp = $("<div/>").append(e);
 			self.content($(markUp).html());
+			
+			prettyPrint();
 		}, "text");
 	});
 })();

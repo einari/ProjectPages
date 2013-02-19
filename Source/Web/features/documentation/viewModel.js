@@ -82,17 +82,9 @@
 				var codeBlocks = $("code",markUp);
 				
 				$.each(codeBlocks, function(index, item) {
-	
-					var row = $("<div class='row'/>");
-					var span = $("<div class='span8'/>");
 					var pre = $("<pre class='prettyprint'/>");
-					
-					row.append(span);
-					span.append(pre);
 					pre.append($(item).html());
-	
-					$(item).parent().replaceWith(row);
-	
+					$(item).parent().replaceWith(pre);
 				});
 				
 				self.content($(markUp).html());

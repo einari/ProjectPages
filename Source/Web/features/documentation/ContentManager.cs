@@ -52,10 +52,11 @@ namespace Web.Features.Documentation
 		public IEnumerable<Group> GetDocumentationStructure (string project)
 		{
 			var groups = new List<Group>();
-			var path = string.Format("{0}{1}Documentation",GetRepositoryPathFor(project),Path.DirectorySeparatorChar);
+			var path = GetRepositoryPathFor(project);
 			var git = Git.Open (path);
+			var documentationPath = string.Format("{0}{1}Documentation",path,Path.DirectorySeparatorChar);
 
-			var directory = new DirectoryInfo(path);
+			var directory = new DirectoryInfo(documentationPath);
 			foreach( var groupDirectory in directory.GetDirectories() ) 
 			{
 				if( groupDirectory.Name.StartsWith(".") ) continue;

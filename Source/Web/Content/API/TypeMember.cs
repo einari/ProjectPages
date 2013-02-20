@@ -8,6 +8,7 @@ namespace Web.Content.API
         public string Name { get; set; }
 
         public List<MethodMember> Methods { get; set; }
+        public string File { get; set; }
 
         public TypeMember()
         {

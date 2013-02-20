@@ -14,7 +14,7 @@
             <!-- ko if: typeof members !== 'undefined' && members.length > 0 -->
             <ul data-bind="foreach: members"">
                 <li>
-                    <input type="checkbox" /><label data-bind="text: name"></label>
+                    <input type="checkbox" /><label><a href="#" data-bind="text: name, click: $root.getContent.bind($data,$data.file)"></a></label>
                     <ul data-bind="foreach: methods">
                         <li><a href="#" data-bind="text: name, click: $root.getContent.bind($data,$data.file)"></a></li>
                     </ul>

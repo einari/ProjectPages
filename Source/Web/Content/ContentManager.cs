@@ -131,6 +131,7 @@ namespace Web.Content
                 {
                     var type = new TypeMember();
                     type.Name = directory.Name;
+                    type.File = string.Format("{0}{1}{2}", directory.FullName.Substring(basePath.Length + 1), Path.DirectorySeparatorChar, typeFile);
                     type.Methods.AddRange(
                         files
                             .Where(f => f.Name != typeFile)

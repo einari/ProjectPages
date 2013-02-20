@@ -109,6 +109,7 @@ namespace XmlDocToMarkDown
     {
         static Assembly _assembly;
         static Dictionary<Type, List<string>> _baseTypesWithImplementations = new Dictionary<Type, List<string>>();
+        static Dictionary<string, bool> _methodsOutputted = new Dictionary<string, bool>();
 
         static void Main(string[] args)
         {
@@ -145,6 +146,7 @@ namespace XmlDocToMarkDown
             paths.Add(currentDirectory);
 
             var name = member.GetName();
+            var fullName = member.GetFullName();
             
             var typeName = member.GetTypeName();
             var type = _assembly.GetType(typeName);
@@ -186,7 +188,21 @@ namespace XmlDocToMarkDown
                 var writer = File.CreateText(fileName);
                 writer.Write(builder.ToString());
                 writer.Close();
+
+                builder = new StringBuilder();
+                builder.AppendLine();
+                builder.AppendLine();
+                if (!_methodsOutputted.ContainsKey(path))
+                {
+                    builder.AppendLine("**Methods**\n");
+                    _methodsOutputted[path] = true;
+                }
+                builder.AppendFormat("[{0}]({1})\n", name, fullName);
+                var dir = new DirectoryInfo(path);
+                var typeSummaryFileName = Path.Combine(dir.FullName, string.Format("{0}.md", dir.Name));
+                File.AppendAllText(typeSummaryFileName, builder.ToString());
             }
+
 
             Directory.SetCurrentDirectory(currentDirectory);
         }
@@ -209,7 +225,6 @@ namespace XmlDocToMarkDown
                         paths = new List<string>();
                         _baseTypesWithImplementations[baseType] = paths;
                     }
-                    paths.Add(Directory.GetCurrentDirectory());
                 }
             }
 

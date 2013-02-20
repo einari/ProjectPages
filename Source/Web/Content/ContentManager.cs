@@ -1,11 +1,11 @@
+using System.Collections.Generic;
 using System.IO;
-using NGit.Api;
+using System.Linq;
 using System.Web;
 using Bifrost.Execution;
-using System.Collections.Generic;
-using System.Linq;
-using System;
+using NGit.Api;
 using Sharpen;
+using Web.Content.API;
 using Web.Content.Documentation;
 
 namespace Web.Content
@@ -95,6 +95,62 @@ namespace Web.Content
 			return content;
 		}
 
+        public IEnumerable<RootAssembly> GetAPIStructure(string project)
+        {
+            var basePath = GetRepositoryPathFor(project);
+            var path = string.Format("{0}{1}API",basePath,Path.DirectorySeparatorChar);
+            var assemblies = new List<RootAssembly>();
+            var directories = Directory.GetDirectories(path);
+            foreach (var directory in directories)
+            {
+                var directoryInfo = new DirectoryInfo(directory);
+
+                var assembly = new RootAssembly();
+                assembly.Name = directoryInfo.Name;
+
+                foreach (var namespaceDirectory in directoryInfo.GetDirectories())
+                {
+                    var @namespace = new Namespace();
+                    @namespace.Name = namespaceDirectory.Name;
+                    assembly.Namespaces.Add(@namespace);
+                    PopulateNamespaceFromDirectory(@namespace, namespaceDirectory, basePath);
+                }
+
+                assemblies.Add(assembly);
+            }
+            return assemblies;
+        }
+
+        void PopulateNamespaceFromDirectory(Namespace @namespace, DirectoryInfo namespaceDirectory, string basePath)
+        {
+            foreach (var directory in namespaceDirectory.GetDirectories())
+            {
+                var files = directory.GetFiles();
+                var typeFile = directory.Name + ".md";
+                if (files.Any(f => f.Name == typeFile))
+                {
+                    var type = new TypeMember();
+                    type.Name = directory.Name;
+                    type.Methods.AddRange(
+                        files
+                            .Where(f => f.Name != typeFile)
+                            .Select(f => new MethodMember
+                            {
+                                Name = Path.GetFileNameWithoutExtension(f.Name),
+                                File = f.FullName.Substring(basePath.Length+1)
+                            }));
+                    @namespace.Members.Add(type);
+                }
+                else
+                {
+                    var subNamespace = new Namespace();
+                    subNamespace.Name = directory.Name;
+                    @namespace.Namespaces.Add(subNamespace);
+                    PopulateNamespaceFromDirectory(@subNamespace, directory, basePath);
+                }
+            }
+        }
+
 		bool FileIsMarkDown(FileInfo fileInfo)
 		{
 			return fileInfo.Extension == ".md";
@@ -147,6 +203,6 @@ namespace Web.Content
 			var fullPath = string.Format ("{0}{1}{2}-Site", ContentPath, Path.DirectorySeparatorChar, project);
 			return fullPath;
 		}
-	}
+    }
 }
 

@@ -10,6 +10,7 @@ namespace Web.Content
 		void DeleteRepository(string project);
 		IEnumerable<Group> GetDocumentationStructure(string project);
         IEnumerable<RootAssembly> GetAPIStructure(string project);
+        IEnumerable<string> GetTutorials(string project);
 		string GetFileContentFor(string project, string file);
 	}
 }

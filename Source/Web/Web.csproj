@@ -150,6 +150,8 @@
     <Content Include="favicon.ico" />
     <Content Include="features\api\view.html" />
     <Content Include="features\api\viewModel.js" />
+    <Content Include="features\tutorials\view.html" />
+    <Content Include="features\tutorials\viewModel.js" />
     <Content Include="img\treeViewIcons.png" />
     <Content Include="index.html" />
     <Content Include="css\bootstrap-responsive.css" />
@@ -230,6 +232,9 @@
     <Compile Include="Content\API\Namespace.cs" />
     <Compile Include="Content\API\RootAssembly.cs" />
     <Compile Include="Content\API\TypeMember.cs" />
+    <Compile Include="Content\Tutorials.ashx.cs">
+      <DependentUpon>Tutorials.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -269,6 +274,7 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="Content\API\APIStructureHandler.ashx" />
+    <Content Include="Content\Tutorials.ashx" />
     <None Include="font\SegoeUI.ttf" />
   </ItemGroup>
 </Project>

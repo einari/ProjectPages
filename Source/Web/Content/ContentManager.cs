@@ -121,6 +121,14 @@ namespace Web.Content
             return assemblies;
         }
 
+        public IEnumerable<string> GetTutorials(string project)
+        {
+            var basePath = GetRepositoryPathFor(project);
+            var path = Path.Combine(basePath, "Tutorials");
+
+            return Directory.GetFiles(path).Select(f => Path.GetFileNameWithoutExtension(f)).ToArray();
+        }
+
         void PopulateNamespaceFromDirectory(Namespace @namespace, DirectoryInfo namespaceDirectory, string basePath)
         {
             foreach (var directory in namespaceDirectory.GetDirectories())

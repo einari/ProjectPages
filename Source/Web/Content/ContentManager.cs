@@ -38,8 +38,8 @@ namespace Web.Content
 			else 
 			{
 				var git = Git.Open (repositoryPath);
-				git.Pull().Call ();
-			}
+				git.Pull().Call();
+            }
 		}
 
 		public void DeleteRepository(string project)

@@ -20,6 +20,7 @@ namespace Web.Content
 			{
 				DocumentationContent.Reset ();
 				DocumentationContent.Generate ();
+                new ContentManager().Synchronize("Bifrost");
 			});
 
 			context.Response.Charset = "UTF-8";

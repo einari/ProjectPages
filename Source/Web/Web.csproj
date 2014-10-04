@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FDA1779B-5E9B-41FF-A858-902389E4FC93}</ProjectGuid>
+    <ProjectTypeGuids>{349C5851-65DF-11DA-9384-00065B846F21};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Web</RootNamespace>
+    <AssemblyName>Web</AssemblyName>
+    <UseIISExpress>false</UseIISExpress>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\solutions\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>bin</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>bin</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\solutions\packages\Newtonsoft.Json.4.5.3\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="MarkdownSharp">
+      <HintPath>..\solutions\packages\MarkdownSharp.1.13.0.0\lib\35\MarkdownSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.Web">
+      <HintPath>..\solutions\packages\Bifrost\Bifrost.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost">
+      <HintPath>..\solutions\packages\Bifrost\Bifrost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebActivator">
+      <HintPath>..\solutions\packages\WebActivator.1.4.4\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\solutions\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.Unity">
+      <HintPath>..\solutions\packages\Bifrost\Bifrost.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\solutions\packages\Unity.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\solutions\packages\Unity.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="FluentValidation">
+      <HintPath>..\solutions\packages\FluentValidation.3.4.6.0\lib\Net40\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="NGit">
+      <HintPath>..\solutions\packages\ngit\NGit.dll</HintPath>
+    </Reference>
+    <Reference Include="NSch">
+      <HintPath>..\solutions\packages\ngit\NSch.dll</HintPath>
+    </Reference>
+    <Reference Include="Sharpen">
+      <HintPath>..\solutions\packages\ngit\Sharpen.dll</HintPath>
+    </Reference>
+    <Reference Include="Sharpen.Test">
+      <HintPath>..\solutions\packages\ngit\Sharpen.Test.dll</HintPath>
+    </Reference>
+    <Reference Include="Sharpen.Unix">
+      <HintPath>..\solutions\packages\ngit\Sharpen.Unix.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\solutions\packages\ngit\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Security.Win32">
+      <HintPath>..\solutions\packages\ngit\Mono.Security.Win32.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Security">
+      <HintPath>..\solutions\packages\ngit\Mono.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Posix">
+      <HintPath>..\solutions\packages\ngit\Mono.Posix.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties VerifyCodeBehindFields="True" VerifyCodeBehindEvents="True">
+        <XspParameters Port="8080" Address="127.0.0.1" SslMode="None" SslProtocol="Default" KeyType="None" CertFile="" KeyFile="" PasswordOptions="None" Password="" Verbose="True" />
+      </Properties>
+    </MonoDevelop>
+    <VisualStudio>
+      <FlavorProperties GUID="{349C5851-65DF-11DA-9384-00065B846F21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1051</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <ItemGroup>
+    <Content Include="css\treeView.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="features\api\view.html" />
+    <Content Include="features\api\viewModel.js" />
+    <Content Include="features\releaseNotes\view.html" />
+    <Content Include="features\releaseNotes\viewModel.js" />
+    <Content Include="features\tutorials\view.html" />
+    <Content Include="features\tutorials\viewModel.js" />
+    <Content Include="img\treeViewIcons.png" />
+    <Content Include="index.html" />
+    <Content Include="css\bootstrap-responsive.css" />
+    <Content Include="css\bootstrap-responsive.min.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\ribbon.css" />
+    <Content Include="img\glyphicons-halflings-white.png" />
+    <Content Include="img\glyphicons-halflings.png" />
+    <Content Include="Global.asax" />
+    <Content Include="css\Collegiate.ttf" />
+    <Content Include="prettify\lang-apollo.js" />
+    <Content Include="prettify\lang-clj.js" />
+    <Content Include="prettify\lang-css.js" />
+    <Content Include="prettify\lang-go.js" />
+    <Content Include="prettify\lang-hs.js" />
+    <Content Include="prettify\lang-lisp.js" />
+    <Content Include="prettify\lang-lua.js" />
+    <Content Include="prettify\lang-ml.js" />
+    <Content Include="prettify\lang-n.js" />
+    <Content Include="prettify\lang-proto.js" />
+    <Content Include="prettify\lang-scala.js" />
+    <Content Include="prettify\lang-sql.js" />
+    <Content Include="prettify\lang-tex.js" />
+    <Content Include="prettify\lang-vb.js" />
+    <Content Include="prettify\lang-vhdl.js" />
+    <Content Include="prettify\lang-wiki.js" />
+    <Content Include="prettify\lang-xq.js" />
+    <Content Include="prettify\lang-yaml.js" />
+    <Content Include="prettify\prettify.css" />
+    <Content Include="prettify\prettify.js" />
+    <Content Include="prettify\sunburst.css" />
+    <Content Include="scripts\bootstrap.js" />
+    <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="scripts\Bifrost.debug.js" />
+    <Content Include="scripts\custom.js" />
+    <Content Include="scripts\domReady.js" />
+    <Content Include="scripts\hoverintent.js" />
+    <Content Include="scripts\jquery-1.7.1.min.js" />
+    <Content Include="scripts\jquery.history.js" />
+    <Content Include="scripts\knockout-2.0.0.js" />
+    <Content Include="scripts\knockout.mapping-2.0.0.js" />
+    <Content Include="scripts\main.js" />
+    <Content Include="scripts\order.js" />
+    <Content Include="scripts\require.js" />
+    <Content Include="scripts\text.js" />
+    <Content Include="index.js" />
+    <Content Include="features\home\view.html" />
+    <Content Include="features\home\viewModel.js" />
+    <Content Include="scripts\marked.js" />
+    <Content Include="img\pattern_40.gif" />
+    <Content Include="scripts\bootstrap-collapse.js" />
+    <Content Include="features\documentation\viewModel.js" />
+    <Content Include="features\documentation\view.html" />
+    <Content Include="features\documentation\index.html" />
+    <Content Include="features\documentation\index.js" />
+    <Content Include="css\dolittle.css" />
+    <Content Include="logos\bifrost.png" />
+    <Content Include="img\balder-icon.png" />
+    <Content Include="img\bifrost-icon.png" />
+    <Content Include="img\chirp-icon.png" />
+    <Content Include="img\entypo.png" />
+    <Content Include="img\forseti-icon.png" />
+    <Content Include="img\yggdrasil-icon.png" />
+    <Content Include="ServerVariables.ashx" />
+    <Content Include="Content\ElementLoader.ashx" />
+    <Content Include="Content\ResetContent.ashx" />
+    <Content Include="Content\ImageHandler.ashx" />
+    <Content Include="Content\Documentation\DocumentationContent.ashx" />
+    <Content Include="features\quickStart\view.html" />
+    <Content Include="features\quickStart\viewModel.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Content\API\APIStructureHandler.ashx.cs">
+      <DependentUpon>APIStructureHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\API\MethodMember.cs" />
+    <Compile Include="Content\API\Namespace.cs" />
+    <Compile Include="Content\API\RootAssembly.cs" />
+    <Compile Include="Content\API\TypeMember.cs" />
+    <Compile Include="Content\Tutorials.ashx.cs">
+      <DependentUpon>Tutorials.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="ServerVariables.ashx.cs">
+      <DependentUpon>ServerVariables.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\ElementLoader.ashx.cs">
+      <DependentUpon>ElementLoader.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\ResetContent.ashx.cs">
+      <DependentUpon>ResetContent.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\ImageHandler.ashx.cs">
+      <DependentUpon>ImageHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\ContentManager.cs" />
+    <Compile Include="Content\IContentManager.cs" />
+    <Compile Include="Content\Documentation\DocumentationContent.ashx.cs">
+      <DependentUpon>DocumentationContent.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\Documentation\Element.cs" />
+    <Compile Include="Content\Documentation\Group.cs" />
+    <Compile Include="Content\Documentation\Topic.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="web.config" />
+  </ItemGroup>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ItemGroup />
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Content\API\APIStructureHandler.ashx" />
+    <Content Include="Content\Tutorials.ashx" />
+    <None Include="font\SegoeUI.ttf" />
+  </ItemGroup>
+</Project>

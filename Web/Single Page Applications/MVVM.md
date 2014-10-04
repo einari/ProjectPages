@@ -1,1 +1,0 @@
-Bifrost for Single Page Application, frontend development has been optimized for [MVVM](http://en.wikipedia.org/wiki/MVVM), a pattern that promotes decoupling of the different concerns that make up an application in the frontend. Everything is driven from the concept of the View composing it self by observing state and utilizing behavior exposed by ViewModels.

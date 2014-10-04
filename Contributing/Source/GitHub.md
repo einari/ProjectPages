@@ -1,1 +1,0 @@
-Bifrost is hosted on GitHub [here](http://github.com/dolittlestudios/bifrost).

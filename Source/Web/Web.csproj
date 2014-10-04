@@ -150,6 +150,8 @@
     <Content Include="favicon.ico" />
     <Content Include="features\api\view.html" />
     <Content Include="features\api\viewModel.js" />
+    <Content Include="features\ReleaseNotes\view.html" />
+    <Content Include="features\ReleaseNotes\viewModel.js" />
     <Content Include="features\tutorials\view.html" />
     <Content Include="features\tutorials\viewModel.js" />
     <Content Include="img\treeViewIcons.png" />

@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Bifrost</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<meta name="google-site-verification" content="_uCCzZU_6DFTbyOSj7XyLbXCasJJRW9Mq29bvHtXNkg" />
+	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="css/ribbon.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="css/treeView.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    <link href="css/dolittle.css" rel="stylesheet">
+	
+	<link rel="stylesheet" href="prettify/prettify.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="prettify/sunburst.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	
+	<script type="text/javascript">
+		window['PR_SHOULD_USE_CONTINUATION'] = true;
+		window['PR_TAB_WIDTH'] = 4;			
+	</script>
+	
+	<script data-main="scripts/main" src="scripts/require.js" type="text/javascript" charset="utf-8"></script>
+
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-33897054-1']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>	
+
+    <style>
+        .nuget-badge code {
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            background-color: #202020;
+            border: 4px solid #c0c0c0;
+            border-radius: 5px;
+            box-shadow: 2px 2px 3px #6e6e6e;
+            color: #e2e2e2;
+            display: block;
+            font: 1.5em 'andale mono', 'lucida console', monospace;
+            line-height: 1.5em;
+            overflow: auto;
+            padding: 15px;
+        }
+    </style>
+</head>
+
+
+<body onload="prettyPrint();" data-spy="scroll" data-target=".subnav" data-offset="50">
+    <div class="regionOuter" style="background-color:#bf3a00; padding-top:20px; padding-bottom:10px;">
+      <div class="container-narrow">
+        <div class="masthead">
+          <ul class="nav nav-pills pull-right">
+            <li class="active"><a href="/">Home</a></li>
+            <!--<li><a href="/quickStart">Quick Start</a></li>-->
+            <li><a href="/ReleaseNotes">Release Notes</a></li>
+            <li><a href="/tutorials">Tutorials</a></li>
+            <li><a href="/documentation">Documentation</a></li>
+            <li><a href="/api">API</a></li>
+            <li><a href="http://www.dolittle.com">Dolittle</a></li>
+          </ul>
+          <img src="logos/bifrost.png" />
+        </div>
+      </div>	
+    </div>
+
+    <div class="regionOuter" style="background-color: #bbb;">
+      <div class="container-narrow">
+        <div class="row-fluid social">
+          <div class="span12" style="text-align:center;">
+            <iframe allowtransparency="true" frameborder="0" scrolling="no" src="http://platform.twitter.com/widgets/follow_button.html?screen_name=dolittle" style="width:200px; height:20px;"></iframe>
+            <iframe src="http://ghbtns.com/github-btn.html?user=dolittle&amp;type=follow&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="165" height="20"></iframe>
+            <iframe src="http://ghbtns.com/github-btn.html?user=dolittle&amp;repo=bifrost&amp;type=fork&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="165" height="20"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+			
+	<div data-bind="feature: feature"></div>
+
+    <div class="regionOuter" style="background-color: #ddd;">
+      <div class="container-narrow">
+        <div class="row-fluid contact">
+          <div class="span6">
+            <h4>More from Dolittle</h4>
+            <ul class="unstyled">
+              <li><img src="img/bifrost-icon.png"><a href="http://bifrost.dolittle.com">Bifrost</a></li>
+              <li><img src="img/yggdrasil-icon.png"><a href="https://github.com/dolittle/Yggdrasil">Yggdrasil</a></li>
+              <li><img src="img/forseti-icon.png"><a href="https://github.com/dolittle/Forseti">Forseti</a></li>
+              <li><img src="img/balder-icon.png"><a href="http://balder.codeplex.com">Balder</a></li>
+              <li><img src="img/chirp-icon.png"><a href="http://chirp.dolittle.com">Chirp</a></li>
+          </div>
+          <div class="span6">
+            <h4>Contact</h4>
+
+            <address>
+              <strong>Dolittle AS</strong><br>
+              Klinestadmoen 9<br>
+              3241 Sandefjord, Norway<br>
+            </address>
+
+            <address>
+              <strong>Anne Grethe</strong><br>
+              <i class="entypo-mail"></i> <a href="mailto:#">ag[at]dolittle.com</a>
+            </address>
+            
+             
+            <address>
+              <strong>Einar</strong><br>
+              <i class="entypo-mail"></i> <a href="mailto:#">einar[at]dolittle.com</a>
+            </address>
+
+            <address>
+              <strong>Pavneet</strong><br>
+              <i class="entypo-mail"></i> <a href="mailto:#">pavneet[at]dolittle.com</a>
+            </address>
+
+          </div>
+        </div>
+
+        <div class="footer">
+          <p>&copy; Dolittle</p>
+        </div>
+      </div>
+    </div>
+	
+</body>
+</html>
+

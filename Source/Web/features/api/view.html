@@ -1,0 +1,43 @@
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    <script type="text/html" id="treeNode">
+        <li>
+            <input type="checkbox" /><label data-bind="text: name"></label>
+
+            <!-- ko if: typeof namespaces !== 'undefined' && namespaces.length > 0 -->
+            <ul data-bind="template: { name: 'treeNode', foreach: namespaces}"></ul>
+            <!-- /ko -->
+
+            <!-- ko if: typeof members !== 'undefined' && members.length > 0 -->
+            <ul data-bind="foreach: members"">
+                <li>
+                    <input type="checkbox" /><label><a href="#" data-bind="text: name, click: $root.getContent.bind($data,$data.file)"></a></label>
+                    <ul data-bind="foreach: methods">
+                        <li><a href="#" data-bind="text: name, click: $root.getContent.bind($data,$data.file)"></a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- /ko -->
+        </li>
+    </script>
+    <div class="regionOuter" style="background-color: white;">
+        <div class="container">
+            <div class="row-fluid social">
+                <div class="span4">
+                    <div class="css-treeview">
+                        <ul data-bind="template: { name: 'treeNode', foreach: structure}"></ul>
+                    </div>
+                </div>
+                <div class="span6" data-bind="html: content">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
